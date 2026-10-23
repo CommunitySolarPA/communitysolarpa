@@ -1,0 +1,164 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import BillEstimator from '../../components/BillEstimator.astro';
+import { utilities, countiesFor, ptcAsOf, type Utility } from '../../data/utilities';
+
+export function getStaticPaths() {
+  return utilities.map((u) => ({ params: { slug: u.slug }, props: { u } }));
+}
+
+const { u } = Astro.props as { u: Utility };
+const { main, part } = countiesFor(u.code);
+const others = utilities.filter((o) => o.slug !== u.slug);
+
+const faqs = [
+  {
+    q: `Would I have to leave ${u.name} to join community solar?`,
+    a: `No. Under HB 504 as passed by the State House, you would stay a ${u.name} customer. Your share of a local solar project would show up as a credit on your regular ${u.name} bill.`,
+  },
+  {
+    q: `Can renters in the ${u.name} area take part?`,
+    a: `Yes. The bill defines a subscriber as a customer of the electric utility, so renters and apartment residents who pay their own ${u.name} bill could subscribe. Nothing gets installed at your home.`,
+  },
+  {
+    q: `Where would the solar projects be?`,
+    a: `A project has to connect to the same utility as its subscribers, so ${u.name} customers would subscribe to projects built in the ${u.name} service area.`,
+  },
+  {
+    q: `What if I move?`,
+    a: `The House-passed bill lets you transfer a subscription if you move within the same utility's territory. A move to a home served by a different utility would mean a new subscription there.`,
+  },
+  {
+    q: `Can I sign up today?`,
+    a: `Not yet. Pennsylvania has no statewide community solar program until the State Senate passes the bill and the Governor signs it. Join our list and we'll email you when that changes.`,
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base
+  title={`Community solar for ${u.name} customers`}
+  description={`How community solar would work for ${u.name} customers in Pennsylvania: the ${u.name} price to compare, which counties ${u.name} serves, and where the state's community solar bill stands.`}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><a href="/utilities">Utility guides</a> · {u.name}</div>
+      <h1>Community solar for {u.name} customers</h1>
+      <p class="lede">
+        {u.fullName} delivers electricity to {u.region}. Here's what Pennsylvania's community solar
+        bill would mean for your {u.name} bill, and how to hear when projects open near you.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="facts">
+        <div class="card">
+          <div class="label">Price to compare</div>
+          <div class="big">{u.ptc.toFixed(2)}¢<small> per kWh</small></div>
+          <div class="sub">Residential, as of {ptcAsOf}. <a href="https://www.papowerswitch.com/" rel="noopener">Check today's price</a>.</div>
+        </div>
+        <div class="card">
+          <div class="label">Part of</div>
+          <div class="big small">{u.parent}</div>
+          <div class="sub">Regulated by the Pennsylvania Public Utility Commission</div>
+        </div>
+        <div class="card">
+          <div class="label">Community solar today</div>
+          <div class="big small">Not available yet</div>
+          <div class="sub"><a href="/pennsylvania">HB 504 is pending in the State Senate</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <h2 style="margin-top:0">Where {u.name} provides power</h2>
+      {main.length > 0 && (
+        <p><strong>Most or all of:</strong> {main.join(', ')} {main.length === 1 ? 'County' : 'counties'}.</p>
+      )}
+      {part.length > 0 && (
+        <p><strong>Parts of:</strong> {part.join(', ')} {part.length === 1 ? 'County' : 'counties'}.</p>
+      )}
+      <p><strong>Communities include:</strong> {u.cities.join(', ')}.</p>
+      <p>
+        Utility lines don't follow county or town borders exactly.
+        <a href="/zip-lookup">Check your ZIP code</a>, or look for the utility name on your electric bill.
+      </p>
+
+      <h2>How community solar would work on your {u.name} bill</h2>
+      <ol>
+        <li><strong>A solar project is built in the {u.name} area</strong> and connects to {u.name}'s grid. Under the House-passed bill, most projects can be up to 5 megawatts, or up to 20 megawatts on rooftops and former industrial land (brownfields).</li>
+        <li><strong>You subscribe to a share of it.</strong> At least half of each project has to go to small subscribers, like households, or to farms.</li>
+        <li><strong>{u.name} puts a credit on your bill</strong> each month for the power your share produced. Credits that are more than your bill roll over to the next month.</li>
+      </ol>
+      <p>
+        The bill says credits can offset any part of your bill except the per-kWh and demand-based
+        distribution charges, which are what {u.name} charges to deliver power over its wires.
+      </p>
+
+      <h2>Your price to compare, and what it means</h2>
+      <p>
+        The price to compare is what {u.name} charges for the electricity itself (generation and
+        transmission) if you haven't picked a different supplier. It's {u.ptc.toFixed(2)}¢ per kWh
+        as of {ptcAsOf} and changes from time to time, usually at least twice a year. It's a handy benchmark for judging any offer to
+        lower your electricity cost, including community solar.
+      </p>
+
+      <BillEstimator ptc={u.ptc} name={u.name} />
+
+      <div class="callout">{u.note}</div>
+
+      <h2>Common questions from {u.name} customers</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <h2>Other Pennsylvania utilities</h2>
+      <ul class="chips">
+        {others.map((o) => <li><a href={`/utilities/${o.slug}`}>{o.name}</a></li>)}
+        <li><a href="/utilities#other">Smaller utilities and co-ops</a></li>
+      </ul>
+
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li><a href="https://www.papowerswitch.com/" rel="noopener">PA PowerSwitch (PA Public Utility Commission): price to compare by utility</a></li>
+        <li><a href="https://www.palegis.us/legislation/bills/2025/hb504" rel="noopener">Pennsylvania General Assembly: HB 504 bill information</a></li>
+        <li><a href="https://data.openei.org/submissions/5993" rel="noopener">U.S. Department of Energy / OpenEI: electric utilities by ZIP code (2022), used for the service area above</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <Signup />
+</Base>
+
+<style>
+  .hero .eyebrow a { color: inherit; text-decoration: none; }
+  .facts { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .facts .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .facts .big { font-family: var(--serif); font-size: 2rem; color: var(--green-900); line-height: 1.2; margin: 6px 0; }
+  .facts .big.small { font-size: 1.35rem; }
+  .facts .big small { font-family: var(--font); font-size: .9rem; color: var(--muted); }
+  .facts .sub { font-size: .9rem; color: var(--muted); }
+  .faq details { border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .faq summary { cursor: pointer; font-weight: 600; color: var(--green-900); }
+  .faq details p { margin: 10px 0 0; }
+  .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips li { margin: 0; }
+  .chips a { display: inline-block; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; text-decoration: none; font-size: .95rem; }
+  .sources { font-size: .95rem; }
+</style>

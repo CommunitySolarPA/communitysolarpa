@@ -1,0 +1,59 @@
+---
+/*
+  Illustrative bill math using a utility's price to compare.
+  Not an offer: real savings will depend on program rules set after HB 504 passes.
+*/
+interface Props { ptc: number; name: string; }
+const { ptc, name } = Astro.props;
+---
+<div class="estimator card" data-ptc={ptc}>
+  <h3>Rough math for a {name} bill</h3>
+  <label for="est-kwh">Your monthly electricity use (kWh, shown on your bill)</label>
+  <div class="est-row">
+    <input id="est-kwh" type="number" min="50" max="5000" step="10" value="750" inputmode="numeric" />
+    <span>kWh per month</span>
+  </div>
+  <dl class="est-out">
+    <div><dt>Supply cost at the {name} price to compare</dt><dd data-out="supply">$0</dd></div>
+    <div><dt>If a community solar plan saved 10% on that</dt><dd data-out="save">$0 a month</dd></div>
+    <div><dt>Over a year</dt><dd data-out="year">$0</dd></div>
+  </dl>
+  <p class="fine">
+    For illustration only. Uses the {name} price to compare of {ptc.toFixed(2)}¢ per kWh. Actual
+    credits and savings would depend on the program rules regulators write and the terms each
+    project offers.
+  </p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.estimator').forEach((el) => {
+    const ptc = Number(el.dataset.ptc);
+    const input = el.querySelector<HTMLInputElement>('input')!;
+    const fmt = (n: number) => '$' + n.toFixed(2);
+    const out = (k: string) => el.querySelector<HTMLElement>(`[data-out="${k}"]`)!;
+    const calc = () => {
+      const kwh = Math.max(0, Number(input.value) || 0);
+      const supply = (kwh * ptc) / 100;
+      out('supply').textContent = fmt(supply) + ' a month';
+      out('save').textContent = fmt(supply * 0.1) + ' a month';
+      out('year').textContent = fmt(supply * 0.1 * 12);
+    };
+    input.addEventListener('input', calc);
+    calc();
+  });
+</script>
+
+<style>
+  .estimator { margin: 1.5em 0; }
+  .estimator h3 { margin-top: 0; }
+  .estimator label { display: block; font-size: .95rem; color: var(--muted); margin-bottom: 6px; }
+  .est-row { display: flex; align-items: center; gap: 10px; }
+  .est-row input { width: 130px; padding: 10px 12px; font-size: 1rem; border: 2px solid var(--line); border-radius: 10px; font-family: inherit; }
+  .est-row input:focus { outline: none; border-color: var(--green-600); }
+  .est-out { margin: 18px 0 8px; display: grid; gap: 10px; }
+  .est-out div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+  .est-out dt { color: var(--muted); }
+  .est-out dd { margin: 0; font-weight: 700; color: var(--green-900); white-space: nowrap; }
+  .fine { font-size: .85rem; color: var(--muted); margin: 0; }
+  @media (max-width: 520px) { .est-out div { flex-direction: column; gap: 2px; } }
+</style>

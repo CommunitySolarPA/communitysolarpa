@@ -48,6 +48,21 @@ import Signup from '../components/Signup.astro';
 
   <section>
     <div class="wrap">
+      <div class="card zip-cta">
+        <h2 style="margin-top:0">What would community solar mean where you live?</h2>
+        <p>Enter your ZIP code to find your electric utility and its price to compare.</p>
+        <form action="/zip-lookup" method="get" class="zip-mini">
+          <label for="home-zip" style="position:absolute;left:-9999px">ZIP code</label>
+          <input id="home-zip" name="zip" type="text" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" placeholder="ZIP code" required />
+          <button class="btn" type="submit">Look it up</button>
+        </form>
+        <p style="margin:12px 0 0;font-size:.95rem">Or browse <a href="/utilities">utility guides</a> for PECO, PPL, Duquesne Light, Met-Ed, Penelec, Penn Power, and West Penn Power.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
       <div class="callout">
         <span class="status">Pending in the State Senate</span>
         <p style="margin:.6em 0 0">
@@ -80,3 +95,9 @@ import Signup from '../components/Signup.astro';
 
   <Signup />
 </Base>
+
+<style>
+  .zip-mini { display: flex; gap: 10px; max-width: 420px; }
+  .zip-mini input { flex: 1; min-width: 0; padding: 12px 14px; font-size: 1rem; border: 2px solid var(--line); border-radius: 10px; font-family: inherit; }
+  .zip-mini input:focus { outline: none; border-color: var(--green-600); }
+</style>

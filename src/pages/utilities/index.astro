@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import { utilities, smallUtilities, countiesFor, ptcAsOf } from '../../data/utilities';
+const rows = utilities.map((u) => ({ ...u, counties: countiesFor(u.code).main }));
+---
+<Base
+  title="Pennsylvania electric utilities and community solar"
+  description="Community solar guides for PECO, PPL, Duquesne Light, Met-Ed, Penelec, Penn Power, and West Penn Power customers, with each utility's price to compare and service area."
+>
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Utility guides</div>
+      <h1>Community solar, utility by utility</h1>
+      <p class="lede">
+        In Pennsylvania, community solar runs through your electric utility. Your utility decides
+        which projects you could join and is where your bill credits would show up. Find yours below.
+      </p>
+      <p><a class="btn" href="/zip-lookup">Find my utility by ZIP code</a></p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Utility</th><th>Main counties</th><th>Price to compare*</th></tr>
+          </thead>
+          <tbody>
+            {rows.map((u) => (
+              <tr>
+                <td><a href={`/utilities/${u.slug}`}><strong>{u.name}</strong></a><br /><span class="muted">{u.parent}</span></td>
+                <td>{u.counties.join(', ')}</td>
+                <td class="num">{u.ptc.toFixed(2)}¢</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="updated">*Residential price to compare in cents per kWh, as of {ptcAsOf}. Prices change from time to time, usually at least twice a year. Check current prices at <a href="https://www.papowerswitch.com/" rel="noopener">PA PowerSwitch</a>.</p>
+    </div>
+  </section>
+
+  <section id="other">
+    <div class="wrap prose">
+      <h2 style="margin-top:0">Smaller utilities</h2>
+      <p>A few smaller regulated utilities serve parts of the state. As Pennsylvania-regulated electric utilities, their customers would likely be covered by the community solar bill too.</p>
+      <ul>
+        {smallUtilities.map((s) => <li><strong>{s.name}</strong>: {s.area}</li>)}
+      </ul>
+
+      <h2>Electric co-ops and borough utilities</h2>
+      <p>
+        Many rural Pennsylvanians get power from an electric cooperative, and some towns run their
+        own borough electric systems. HB 504 works through the state's regulated electric
+        distribution companies, so as written it likely would not apply to co-op or borough
+        customers. We'll update this page as the bill and program rules take shape.
+      </p>
+    </div>
+  </section>
+
+  <Signup />
+</Base>
+
+<style>
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--green-100); }
+  td.num { white-space: nowrap; font-weight: 700; }
+  .muted { color: var(--muted); font-size: .9rem; }
+  @media (max-width: 600px) { th, td { padding: 10px; font-size: .95rem; } }
+</style>
