@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Signup from '../components/Signup.astro';
+---
+<Base
+  title="About"
+  description="Why CommunitySolarPA exists: helping Pennsylvania adopt solar for a cleaner future, lasting energy independence, and access for every household."
+>
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">Our mission</div>
+      <h1>Helping Pennsylvania adopt solar, for everyone</h1>
+      <p>
+        We're working to help Pennsylvania adopt solar energy at scale. We believe community solar
+        can deliver three things at once:
+      </p>
+      <div class="grid" style="margin:1.5em 0">
+        <div class="card">
+          <h3>A cleaner future</h3>
+          <p>Power from the sun instead of burning fossil fuels.</p>
+        </div>
+        <div class="card">
+          <h3>Lasting energy independence</h3>
+          <p>Energy produced here in Pennsylvania, from a source that never runs out.</p>
+        </div>
+        <div class="card">
+          <h3>Solar for everyone</h3>
+          <p>Renters, apartment dwellers, and households on every budget can benefit, not just homeowners with a sunny roof.</p>
+        </div>
+      </div>
+
+      <h2>What we do</h2>
+      <ul>
+        <li><strong>Explain community solar</strong> in plain language, so Pennsylvanians know what it is and how it works.</li>
+        <li><strong>Track Pennsylvania's progress</strong> on the legislation and rules that would make it possible.</li>
+        <li><strong>Keep people informed</strong> when there's news and when community solar becomes available in their area.</li>
+      </ul>
+
+      <h2>Get in touch</h2>
+      <p>
+        Questions, ideas, or want to help? Email us at
+        <a href="mailto:hello@communitysolarpa.org">hello@communitysolarpa.org</a>.
+      </p>
+    </div>
+  </section>
+  <Signup />
+</Base>

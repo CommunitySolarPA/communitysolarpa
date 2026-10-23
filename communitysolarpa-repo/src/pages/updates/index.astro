@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('updates', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+<Base
+  title="Updates"
+  description="News and updates on community solar in Pennsylvania."
+>
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">News</div>
+      <h1>Updates</h1>
+      <ul class="post-list">
+        {posts.map((p) => (
+          <li>
+            <a href={`/updates/${p.id}`}>{p.data.title}</a>
+            <time datetime={p.data.date.toISOString()}>{fmt(p.data.date)}</time>
+            <p style="margin:.4em 0 0">{p.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <Signup />
+</Base>

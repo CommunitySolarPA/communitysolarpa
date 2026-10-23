@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import Signup from '../components/Signup.astro';
+---
+<Base
+  title="CommunitySolarPA"
+  description="Solar power for every Pennsylvanian — whether you own, rent, or have never had a roof to put panels on. Learn about community solar and where Pennsylvania stands."
+>
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Community solar in Pennsylvania</div>
+      <h1>Solar power for every Pennsylvanian — whether you own, rent, or have never had a roof to put panels on.</h1>
+      <p class="lede">
+        Community solar lets households share the benefits of a local solar project and see
+        credits on their electric bill, with no panels on their own home. Pennsylvania doesn't
+        have a statewide program yet. We're here to explain it and track the progress.
+      </p>
+      <p>
+        <a class="btn" href="#notify">Get notified</a>
+        &nbsp;
+        <a class="btn secondary" href="/what-is-community-solar">How it works</a>
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 style="margin-top:0">Community solar in three steps</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="num">1</span>
+          <h3>A shared solar project is built nearby</h3>
+          <p>A solar array goes up somewhere local, often on farmland, a warehouse roof, or a former industrial site.</p>
+        </div>
+        <div class="card">
+          <span class="num">2</span>
+          <h3>Neighbors subscribe to a share</h3>
+          <p>Homeowners, renters, and apartment residents sign up for a portion of the power it produces. Nothing gets installed at your home.</p>
+        </div>
+        <div class="card">
+          <span class="num">3</span>
+          <h3>Credits show up on your electric bill</h3>
+          <p>Your share of the energy appears as a credit on your regular utility bill. You keep the same utility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="callout">
+        <span class="status">Pending in the State Senate</span>
+        <p style="margin:.6em 0 0">
+          Pennsylvania's community solar bill (HB 504) passed the State House in May 2025 and is
+          waiting on the State Senate. <a href="/pennsylvania">See where it stands →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 style="margin-top:0">Why it matters</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>A cleaner future</h3>
+          <p>Power from the sun instead of burning fossil fuels.</p>
+        </div>
+        <div class="card">
+          <h3>Lasting energy independence</h3>
+          <p>Energy produced here in Pennsylvania, from a source that never runs out.</p>
+        </div>
+        <div class="card">
+          <h3>Solar for everyone</h3>
+          <p>Renters, apartment dwellers, and households on every budget can take part, not just homeowners with a sunny roof.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Signup />
+</Base>

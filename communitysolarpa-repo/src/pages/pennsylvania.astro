@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Signup from '../components/Signup.astro';
+
+// Update this date every time the status on this page is re-checked.
+const lastReviewed = 'October 16, 2026';
+---
+<Base
+  title="Pennsylvania community solar status"
+  description="Where Pennsylvania's community solar legislation (HB 504 / SB 504) stands, what it would do, and what happens next."
+>
+  <section>
+    <div class="wrap prose">
+      <div class="eyebrow">Policy tracker</div>
+      <h1>Where Pennsylvania stands on community solar</h1>
+      <p><span class="status">Passed the House · Pending in the Senate</span></p>
+      <p class="updated">Last reviewed: {lastReviewed}</p>
+
+      <p>
+        Pennsylvania doesn't have a statewide community solar program today. House Bill 504
+        would create one. It passed the State House in May 2025 and now needs the State Senate
+        to act.
+      </p>
+
+      <h2>Timeline</h2>
+      <ul class="timeline">
+        <li>
+          <strong>2025: Bills introduced</strong>
+          HB 504 (sponsored by Rep. Peter Schweyer) and the companion SB 504 (sponsored by
+          Sen. Judy Schwank) are introduced in the 2025–2026 legislative session.
+        </li>
+        <li>
+          <strong>May 2025: Passed the State House</strong>
+          HB 504 passed the Pennsylvania House with bipartisan support.
+        </li>
+        <li class="pending">
+          <strong>Next: State Senate</strong>
+          The bill needs to pass the Senate and be signed by the Governor. The 2025–2026 session
+          ends November 30, 2026. Bills that haven't passed by then have to be reintroduced.
+        </li>
+      </ul>
+
+      <h2>What the bill would do</h2>
+      <ul>
+        <li><strong>Allow community energy projects</strong>, mainly solar, to be built and serve subscribers in Pennsylvania.</li>
+        <li><strong>Let utility customers subscribe</strong> to a share of a local project and receive a credit on their electric bill.</li>
+        <li><strong>Encourage participation by low- and moderate-income households</strong> and their communities.</li>
+        <li><strong>Keep costs on participants</strong>, so customers who don't subscribe don't pay for the program.</li>
+      </ul>
+
+      <h2>What happens if it passes</h2>
+      <p>
+        If the bill becomes law, state regulators would still need to write the detailed program
+        rules, such as how bill credits are calculated and how sign-up works. Projects would then
+        need to be approved and built before subscriptions open. We'll explain each step here as
+        it happens.
+      </p>
+
+      <div class="callout">
+        Want to know when there's news? <a href="#notify">Join the update list</a>. We email only when something meaningful changes.
+      </div>
+
+      <h2>Sources</h2>
+      <ul>
+        <li><a href="https://www.cpbj.com/community-solar-bill-passes-in-pa-house/" rel="noopener">Central Penn Business Journal: Community solar bill passes in Pa. House (May 2025)</a></li>
+        <li><a href="https://www.pahouse.com/NorthEastDelegation/InTheNews/NewsRelease/?id=138514" rel="noopener">PA House Democrats: Schweyer bill for shared community energy clears PA House</a></li>
+        <li><a href="https://www.palegis.us/legislation/bills/2025/sb504" rel="noopener">Pennsylvania General Assembly: SB 504 bill information</a></li>
+      </ul>
+    </div>
+  </section>
+  <Signup />
+</Base>

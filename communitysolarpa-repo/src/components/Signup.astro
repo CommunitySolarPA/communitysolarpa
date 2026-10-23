@@ -1,0 +1,111 @@
+---
+/*
+  MailerLite embedded form (account 2716811, form 201453540888020649, embed id 47209845).
+  Markup and class names follow MailerLite's embed so their webforms.min.js
+  handles validation, reCAPTCHA and the success message. Styling is our own.
+*/
+---
+<section id="notify">
+  <div class="wrap">
+    <div class="signup">
+      <h2>Get notified when community solar comes to Pennsylvania</h2>
+      <p>
+        We'll email you when Pennsylvania's community solar law moves forward and when
+        projects open up in your area. No spam, and you can unsubscribe anytime.
+      </p>
+
+      <div id="mlb2-47209845" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-47209845">
+        <div class="ml-form-embedWrapper embedForm">
+          <div class="ml-form-embedBody row-form">
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2716811/forms/201453540888020649/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                <div class="ml-form-fieldRow field-email">
+                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                    <label for="ml-email" class="sr-only">Email address</label>
+                    <input id="ml-email" aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Your email address" autocomplete="email" />
+                  </div>
+                </div>
+                <div class="ml-form-fieldRow ml-last-item field-zip">
+                  <div class="ml-field-group ml-field-z_i_p ml-validate-required">
+                    <label for="ml-zip" class="sr-only">ZIP code</label>
+                    <input id="ml-zip" aria-label="z_i_p" aria-required="true" type="text" class="form-control" data-inputmask="" name="fields[z_i_p]" placeholder="ZIP code" autocomplete="postal-code" inputmode="numeric" maxlength="10" />
+                  </div>
+                </div>
+              </div>
+
+              <p class="consent">
+                By signing up, you agree to receive email updates about community solar in Pennsylvania,
+                including when it becomes available in your area. Unsubscribe anytime. See our
+                <a href="/privacy">privacy policy</a>.
+              </p>
+
+              <div class="ml-form-recaptcha ml-validate-required">
+                <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+              </div>
+
+              <input type="hidden" name="ml-submit" value="1" />
+              <div class="ml-form-embedSubmit">
+                <button type="submit" class="primary btn">Notify me</button>
+                <button disabled="disabled" style="display: none;" type="button" class="loading btn">
+                  <span class="ml-form-embedSubmitLoad"></span>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+              <input type="hidden" name="anticsrf" value="true" />
+            </form>
+          </div>
+
+          <div class="ml-form-successBody row-success" style="display: none">
+            <div class="ml-form-successContent">
+              <h3>Thanks, you're almost on the list!</h3>
+              <p>Check your inbox for a confirmation email and click the link to finish signing up.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function ml_webform_success_47209845() {
+    var $ = window.ml_jQuery || window.jQuery;
+    $('.ml-subscribe-form-47209845 .row-success').show();
+    $('.ml-subscribe-form-47209845 .row-form').hide();
+  }
+</script>
+<script is:inline src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+<script is:inline>
+  fetch("https://assets.mailerlite.com/jsonp/2716811/forms/201453540888020649/takel");
+</script>
+
+<style>
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); border: 0;
+  }
+  .ml-block-form { max-width: 520px; margin-top: 8px; }
+  .ml-form-formContent { display: grid; grid-template-columns: 1fr 150px; gap: 10px; }
+  .ml-block-form input.form-control {
+    width: 100%; padding: 14px 16px; font-size: 1rem; border-radius: 10px;
+    border: 2px solid transparent; background: #fff; color: var(--ink); font-family: inherit;
+  }
+  .ml-block-form input.form-control:focus { outline: none; border-color: var(--sun-500); }
+  @media (max-width: 520px) { .ml-form-formContent { grid-template-columns: 1fr; } }
+  .consent { font-size: .85rem; margin: 12px 0 14px; }
+  .ml-form-recaptcha { margin-bottom: 14px; min-height: 78px; }
+  .ml-form-embedSubmit .btn { min-width: 180px; }
+  .ml-form-embedSubmitLoad {
+    display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+    border: 3px solid var(--green-900); border-color: var(--green-900) var(--green-900) var(--green-900) transparent;
+    animation: mlspin 1.2s linear infinite; vertical-align: middle;
+  }
+  @keyframes mlspin { to { transform: rotate(360deg); } }
+  :global(.ml-error input) { border-color: #ff8a80 !important; }
+  :global(.ml-form-recaptcha.ml-error iframe) { border: 2px solid #ff8a80; border-radius: 4px; }
+  .ml-form-successContent h3 { color: #fff; margin-top: 8px; }
+  @media (max-width: 400px) {
+    .g-recaptcha { transform: scale(0.85); transform-origin: 0 0; }
+  }
+</style>
