@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Signup from '../components/Signup.astro';
+
+const lastReviewed = 'October 27, 2026';
+
+const states = [
+  { name: 'Maine', since: '2011', size: 'About 951 MW (2025)', rules: 'Closed to new projects in December 2025 (see below).' },
+  { name: 'Minnesota', since: '2014', size: 'About 939 MW (2025)', rules: 'Nearly a third of subscribers were low-to-moderate income in a Duke University study.' },
+  { name: 'New York', since: '2015', size: 'About 2,600 MW (2025), the largest in the U.S.', rules: 'At least 5% savings. Up to $180 a year off bills for lower-income households through Solar for All.' },
+  { name: 'Massachusetts', since: '2014', size: '900 MW yearly cap under SMART 3.0', rules: 'At least 20% savings (40% for low-income). At least 40% of each project’s customers must be low-income. No cancellation fees.' },
+  { name: 'Washington, D.C.', since: '', size: '20% of all D.C. solar capacity (2025)', rules: 'Free subscriptions for low-income families through Solar for All.' },
+  { name: 'Colorado', since: '2010', size: 'New inclusive program starting 2026 (53.5 MW first round)', rules: 'Lower-income access built into the new program.' },
+  { name: 'Illinois', since: '2016', size: 'About 435 MW available in the 2025 to 2026 program year', rules: 'Illinois Solar for All, plus a community-driven option that requires direct local benefits.' },
+  { name: 'Maryland', since: '2017', size: 'Grew 30% in 2025', rules: 'A dedicated share of capacity for lower-income households.' },
+  { name: 'Rhode Island', since: '2016', size: 'Ranks 9th per resident', rules: 'Subscribers get bill credits for their share of a project’s output.' },
+  { name: 'New Jersey', since: '2018', size: 'Authorized to reach 3,250 MW', rules: 'At least 15% savings. At least 51% of each project reserved for low- and moderate-income households.' },
+  { name: 'Oregon', since: '2016', size: '161 MW first allocation', rules: 'Fixed credit rates. At least 10% of capacity for low-income households.' },
+];
+---
+<Base
+  title="Why community solar? What it delivered in other states"
+  description="About 20 states and D.C. have community solar. See the savings, access rules, and results in New York, New Jersey, Massachusetts, Minnesota and more, and what Pennsylvania is missing."
+>
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Why community solar</div>
+      <h1>Why community solar?</h1>
+      <p class="lede">
+        About 20 states and Washington, D.C. let households sign up for a share of a local solar farm
+        and get credits on their electric bill. Hundreds of thousands of families save money this way,
+        including renters and people who could never put panels on a roof. Pennsylvania is not one of
+        those states yet.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap prose">
+      <h2>Four reasons it works</h2>
+      <p>
+        <strong>1. Savings without a roof.</strong> Subscribers don't buy or install anything. A national
+        lab review found community solar can cut bills by 5% to 25%, and several states now guarantee a
+        minimum discount: 5% in New York, 15% in New Jersey, and 20% in Massachusetts (40% for low-income
+        households).
+      </p>
+      <p>
+        <strong>2. Renters and families on tight budgets can join.</strong> Many households can't install
+        rooftop solar because they rent, share a building, or can't afford it. In Washington, D.C., free
+        subscriptions for low-income families cut the share of income they spend on energy from 13.5% to 8.8%.
+      </p>
+      <p>
+        <strong>3. Investment in Pennsylvania communities.</strong> A Penn State study of 235 planned
+        projects in 48 counties estimated $1.8 billion in economic activity and over 11,000 jobs during
+        construction. The study was funded by a community solar industry group.
+      </p>
+      <p>
+        <strong>4. Cleaner air.</strong> Every unit of solar power means less power from fossil fuel plants.
+        By EPA's estimates, each 1,000 kWh of solar avoids roughly 0.7 tons of carbon dioxide, plus
+        smog-forming and soot pollution.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>How the leading states compare</h2>
+      <p class="prose">
+        These are the ten states that lead the country in community solar per resident, plus Oregon, a fast
+        grower. Most now guarantee subscribers a minimum discount and reserve space for lower-income households.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>State</th><th>Since</th><th>Size</th><th>Rules for subscribers</th></tr>
+          </thead>
+          <tbody>
+            {states.map((s) => (
+              <tr>
+                <td><strong>{s.name}</strong></td>
+                <td data-label="Since">{s.since}</td>
+                <td data-label="Size">{s.size}</td>
+                <td data-label="Rules">{s.rules}</td>
+              </tr>
+            ))}
+            <tr class="pa">
+              <td><strong>Pennsylvania</strong></td>
+              <td data-label="Since">None</td>
+              <td data-label="Size">0 MW</td>
+              <td data-label="Rules">No program yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="updated">
+        Other states with programs include Connecticut, Hawaii and Vermont, plus Alaska, California, Delaware,
+        New Hampshire, New Mexico, Virginia and Washington. Figures last reviewed {lastReviewed}.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <h2>State by state: what it delivered</h2>
+      <p><strong>New York.</strong> The largest market in the country. Subscribers get credits right on their utility bill with no extra fees, a guaranteed minimum 5% savings, and a cap of $200 on early cancellation fees. A separate Solar for All program gives lower-income households up to $180 a year off their bills.</p>
+      <p><strong>Minnesota.</strong> One of the first states to open a program, in 2014, and the national leader for years. A Duke University study of subscriber data found almost a third of subscribers were low-to-moderate income, even with credit checks in place.</p>
+      <p><strong>Massachusetts.</strong> Under rules that took effect in 2025, regular subscribers are guaranteed at least 20% off the value of their credits, and low-income subscribers 40%. Cancellation fees are banned.</p>
+      <p><strong>New Jersey.</strong> Pennsylvania's neighbor is the fastest-growing market in the country. Every project must reserve at least 51% of its capacity for low- and moderate-income households, and subscribers save at least 15%. In 2025 the state added 3,000 MW of room to grow. Projects can't be built on preserved farmland or forests, so many sit on rooftops, parking lots and brownfields.</p>
+      <p><strong>Illinois.</strong> Started in 2016 and now runs community solar through Illinois Shines and Illinois Solar for All, including a "community-driven" option that requires direct local benefits.</p>
+      <p><strong>Maryland.</strong> Began as a pilot in 2017 with a dedicated share for lower-income households. It grew 30% in 2025, one of the fastest rates among tracked states.</p>
+      <p><strong>Washington, D.C.</strong> Free subscriptions through the District's Solar for All program cut low-income families' energy burden from 13.5% of income to 8.8%.</p>
+      <p><strong>Maine: a lesson in design.</strong> Maine built more community solar per resident than any state, but paid projects generous credits. The program's cost to ratepayers reached $234 million in 2025, and lawmakers closed the program to new projects at the end of that year. Pennsylvania's bill is built differently: its credits don't cover distribution charges, the part of the bill that pays for poles and wires.</p>
+
+      <h2>What Pennsylvania is missing</h2>
+      <p>Pennsylvania has zero community solar today. Four of its neighbors already offer it: New Jersey, New York, Maryland and Delaware.</p>
+      <p>
+        House Bill 504 would change that. It passed the Pennsylvania House in May 2025 and has waited in the
+        Senate Consumer Protection and Professional Licensure Committee since May 22, 2025. The current
+        session ends November 30, 2026. <a href="/pennsylvania">Read where it stands →</a>
+      </p>
+      <p>
+        Under the bill as passed by the House, projects could be up to 5 MW (20 MW on rooftops and brownfields),
+        and at least half of each project's capacity would go to small subscribers like households and farms.
+      </p>
+
+      <div class="callout">
+        <strong>Three things you can do:</strong>
+        <ol>
+          <li><a href="/zip-lookup">Check your ZIP</a> to see your utility and what a subscription could look like.</li>
+          <li><a href="#notify">Join the list</a> so you hear first when Pennsylvania opens a program.</li>
+          <li><a href="https://www.palegis.us/find-my-legislator" rel="noopener">Find your state senator</a> and tell them you support HB 504.</li>
+        </ol>
+      </div>
+
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li><a href="https://ilsr.org/article/energy-democracy/community-solar-tracker/" rel="noopener">ILSR: Community Solar Tracker</a></li>
+        <li><a href="https://pv-magazine-usa.com/2026/09/14/state-policy-design-dictates-u-s-community-solar-growth-as-national-contraction-takes-hold/" rel="noopener">pv magazine: State policy design dictates U.S. community solar growth (Sept. 2026)</a></li>
+        <li><a href="https://pv-magazine-usa.com/2026/06/04/top-ten-community-solar-states-show-the-power-of-program-design/" rel="noopener">pv magazine: Top ten community solar states (June 2026)</a></li>
+        <li><a href="https://pv-magazine-usa.com/2025/09/09/community-solar-makes-subtle-gains-in-capacity-but-bold-moves-in-policy-across-the-u-s/" rel="noopener">pv magazine: Community solar makes subtle gains (Sept. 2025)</a></li>
+        <li><a href="https://ilsr.org/article/energy-democracy/illinois-community-solar-program/" rel="noopener">ILSR: Illinois's community solar program</a></li>
+        <li><a href="https://www.nrel.gov/news/program/2021/sharing-the-sun-report.html" rel="noopener">NREL: Sharing the Sun report</a></li>
+        <li><a href="https://aese.psu.edu/research/centers/cecd/publications/economic-analyses-including-covid-19-analysis/economic-impact/economic-impact-of-community-solar_sept-2020_psu-cecd.pdf/view" rel="noopener">Penn State: Potential economic impact of community solar in Pennsylvania (2020)</a></li>
+        <li><a href="https://www.epa.gov/node/255385" rel="noopener">EPA: Avoided emission rates from AVERT</a></li>
+        <li><a href="https://dukespace.lib.duke.edu/items/a8ca81d7-302e-46ba-a052-7fc0a45e899e" rel="noopener">Duke University: Community solar and Minnesota's low- to moderate-income households</a></li>
+        <li><a href="https://www.mainepublic.org/climate/2025-07-08/maine-eliminates-solar-subsidy-program" rel="noopener">Maine Public: Maine phases out solar subsidy program (July 2025)</a></li>
+        <li><a href="https://www.solarpowerworldonline.com/2026/04/policy-change-virtually-stops-new-community-solar-development-in-maine/" rel="noopener">Solar Power World: Policy change virtually stops new community solar in Maine (April 2026)</a></li>
+        <li><a href="https://www.palegis.us/legislation/bills/2025/hb504" rel="noopener">Pennsylvania General Assembly: HB 504</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <Signup />
+</Base>
+
+<style>
+  .table-wrap { overflow-x: auto; margin: 1em 0; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--green-100); }
+  tr.pa td { background: var(--sun-100); }
+  .callout ol { margin: .5em 0 0; }
+  .sources { font-size: .95rem; }
+  @media (max-width: 600px) {
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr { border-bottom: 1px solid var(--line); padding: 12px 14px; }
+    td { border: 0; padding: 3px 0; font-size: .95rem; }
+    td:first-child { font-size: 1.05rem; padding-bottom: 6px; }
+    td[data-label]::before { content: attr(data-label) ": "; font-weight: 700; color: var(--muted); }
+    td[data-label]:empty { display: none; }
+  }
+</style>
