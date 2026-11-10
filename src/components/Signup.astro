@@ -76,7 +76,36 @@
     window.dataLayer.push({ event: 'generate_lead', form_name: 'notify_signup' });
   }
 </script>
-<script is:inline src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script is:inline>
+  // Load reCAPTCHA only when the sign-up form is about to be seen or used,
+  // instead of on every page view. It renders the .g-recaptcha box when it loads.
+  (function () {
+    var loaded = false;
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.google.com/recaptcha/api.js';
+      s.async = true;
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+    var form = document.getElementById('mlb2-47209845');
+    if (!form) return;
+    form.addEventListener('focusin', load, { once: true });
+    form.addEventListener('pointerdown', load, { once: true });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); }
+      }, { rootMargin: '400px 0px' });
+      io.observe(form);
+    } else {
+      load();
+    }
+    if (location.hash === '#notify') load();
+    window.addEventListener('hashchange', function () { if (location.hash === '#notify') load(); });
+  })();
+</script>
 <script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
 <script is:inline>
   fetch("https://assets.mailerlite.com/jsonp/2716811/forms/201453540888020649/takel");

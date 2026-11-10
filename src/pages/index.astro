@@ -1,10 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
+import { counties } from '../data/counties';
+
+// Largest counties first, for the "find your county" links.
+const biggest = [...counties].sort((a, b) => b.population - a.population).slice(0, 12);
 ---
 <Base
-  title="CommunitySolarPA"
-  description="Solar power for every Pennsylvanian, whether you own, rent, or have never had a roof to put panels on. Learn about community solar and where Pennsylvania stands."
+  title="Pennsylvania Community Solar: How It Works & Where It Stands"
+  description="Community solar for every Pennsylvanian, whether you own or rent. How it works, your utility and county, and where the state's bill stands."
 >
   <div class="hero">
     <div class="wrap">
@@ -63,6 +67,17 @@ import Signup from '../components/Signup.astro';
 
   <section>
     <div class="wrap">
+      <h2 style="margin-top:0">Find your county</h2>
+      <p>Every Pennsylvania county has its own guide: which utility serves it, how many neighbors rent, every ZIP code, and what stands out locally.</p>
+      <ul class="county-chips">
+        {biggest.map((c) => <li><a href={`/counties/${c.slug}`}>{c.name} County</a></li>)}
+        <li><a class="all" href="/counties">All 67 counties →</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
       <div class="callout">
         <span class="status">Pending in the State Senate</span>
         <p style="margin:.6em 0 0">
@@ -97,6 +112,10 @@ import Signup from '../components/Signup.astro';
 </Base>
 
 <style>
+  .county-chips { list-style: none; padding: 0; margin: 1em 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .county-chips li { margin: 0; }
+  .county-chips a { display: inline-block; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; text-decoration: none; font-size: .95rem; }
+  .county-chips a.all { border-color: var(--green-600); font-weight: 600; }
   .zip-mini { display: flex; gap: 10px; max-width: 420px; }
   .zip-mini input { flex: 1; min-width: 0; padding: 12px 14px; font-size: 1rem; border: 2px solid var(--line); border-radius: 10px; font-family: inherit; }
   .zip-mini input:focus { outline: none; border-color: var(--green-600); }

@@ -12,6 +12,25 @@ export function getStaticPaths() {
 
 const { c } = Astro.props as { c: County };
 const county = `${c.name} County`;
+// Main cities people search for, by county (cities that share the county's name are left out).
+const cities: Record<string, string> = {
+  Allegheny: 'Pittsburgh',
+  Lehigh: 'Allentown',
+  Berks: 'Reading',
+  Lackawanna: 'Scranton',
+  Dauphin: 'Harrisburg',
+  Luzerne: 'Wilkes-Barre',
+  Centre: 'State College',
+  Northampton: 'Easton',
+};
+const city = cities[c.name];
+const pageTitle =
+  c.name === 'Philadelphia'
+    ? 'Community Solar in Philadelphia, PA'
+    : city
+      ? `Community Solar in ${city.replace(' and ', ', ')} & ${county}, PA`
+      : `Community Solar in ${county}, PA`;
+const pageDescription = `Community solar in ${c.name === 'Philadelphia' ? 'Philadelphia' : county}${city ? ` (${city})` : ''}, PA: your utility and price to compare, ZIP codes, local housing facts, and where the state bill stands.`;
 const fmt = (n: number) => n.toLocaleString('en-US');
 const round = (n: number, to: number) => Math.round(n / to) * to;
 const smallNames: Record<string, string> = Object.fromEntries(smallUtilities.map((s) => [s.code, s.name]));
@@ -91,8 +110,8 @@ const jsonLd = {
 };
 ---
 <Base
-  title={`Community solar in ${county}, PA`}
-  description={`What community solar would mean in ${county}, Pennsylvania: which utility serves each ZIP code, how many households rent, your state senators, and where the state's community solar bill stands.`}
+  title={pageTitle}
+  description={pageDescription}
 
   breadcrumbs={[{ name: 'County guides', href: '/counties' }, { name: county, href: `/counties/${c.slug}` }]}
   about={aboutCounty}
@@ -104,7 +123,7 @@ const jsonLd = {
       <div class="eyebrow"><a href="/counties">County guides</a> · {county}</div>
       <h1>Community solar in {county}</h1>
       <p class="lede">
-        {county} is home to about {fmt(round(c.population, 1000))} people in {fmt(round(c.households, 1000))} households.
+        {county}{city ? `, which includes ${city},` : ''} is home to about {fmt(round(c.population, 1000))} people in {fmt(round(c.households, 1000))} households.
         Pennsylvania doesn't have a community solar program yet. If the state's bill becomes law, households
         here would subscribe through their electric utility, which for most of the county is {main.name}.
       </p>

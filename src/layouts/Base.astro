@@ -16,7 +16,10 @@ interface Props {
 const { title, description, noindex = false, ogType = 'website', breadcrumbs, about, schema = [] } = Astro.props;
 const siteName = 'CommunitySolarPA';
 const site = 'https://communitysolarpa.org';
-const fullTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+// Keep titles to about 60 characters so search results don't cut them off:
+// add the site name only when it fits.
+const withSite = `${title} | ${siteName}`;
+const fullTitle = title === siteName || withSite.length > 60 ? title : withSite;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = `${site}/og-image.png`;
 
