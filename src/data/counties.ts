@@ -3,6 +3,9 @@
 // comes from public/data/pa-zips.json at build time. This file holds what's written
 // per county: the local section, senators, and extra sources.
 import acs from './county-acs.json';
+// Local sections for counties without a hand-written entry, generated from the same
+// Census and ZIP data shown on each page (standout housing figures, utility splits, co-ops).
+import generated from './county-notes.json';
 
 export const acsVintage = '2020-2024';
 
@@ -140,4 +143,11 @@ const input: CountyInput[] = [
   },
 ];
 
-export const counties: County[] = input.map(withCensus);
+const hand = new Set(input.map((c) => c.name));
+const fromData: CountyInput[] = Object.entries(generated as Record<string, Omit<CountyInput, 'name'>>)
+  .filter(([name]) => !hand.has(name))
+  .map(([name, c]) => ({ name, ...c }));
+
+export const counties: County[] = [...input, ...fromData]
+  .map(withCensus)
+  .sort((a, b) => a.name.localeCompare(b.name));

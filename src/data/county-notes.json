@@ -1,0 +1,640 @@
+{
+ "Adams": {
+  "slug": "adams",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Adams County, usually alongside Met-Ed or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Armstrong": {
+  "slug": "armstrong",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Armstrong County, usually alongside West Penn Power or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Beaver": {
+  "slug": "beaver",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "Duquesne Light is the utility listed for most of Beaver County, but not all of it. Fombell and Koppel are listed only under Penn Power. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Bedford": {
+  "slug": "bedford",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Mobile homes and rural electric co-ops",
+   "body": [
+    "Bedford County has the third-highest share of mobile homes of any Pennsylvania county: 15.2% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power.",
+    "A rural electric co-op is listed in most ZIP codes in Bedford County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Berks": {
+  "slug": "berks",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Rowhomes",
+   "body": [
+    "22.8% of homes in Berks County are rowhomes, townhouses or other attached houses, the fifth-highest share in the state (18.8% statewide). Attached homes tend to have small or shared roofs, which makes community solar a better fit than rooftop panels for many of them."
+   ]
+  }
+ },
+ "Blair": {
+  "slug": "blair",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Blair County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Bradford": {
+  "slug": "bradford",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mobile homes",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Bradford County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Bradford County has the sixth-highest share of mobile homes of any Pennsylvania county: 13.6% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Butler": {
+  "slug": "butler",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and more than one utility",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Butler County, usually alongside West Penn Power or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "West Penn Power is the utility listed for most of Butler County, but not all of it. Callery and Connoquenessing are listed only under Penn Power. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Cambria": {
+  "slug": "cambria",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Cambria County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Cameron": {
+  "slug": "cameron",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Pennsylvania's smallest county and rural electric co-ops",
+   "body": [
+    "Cameron County has about 4,400 residents, the fewest of any Pennsylvania county.",
+    "A rural electric co-op is listed in most ZIP codes in Cameron County, usually alongside West Penn Power or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Carbon": {
+  "slug": "carbon",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 6,400 households in Carbon County rent their home (23.6%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Centre": {
+  "slug": "centre",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Renters and more than one utility",
+   "body": [
+    "About 38.2% of households in Centre County rent their home, roughly 22,500 households. That is the second-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill.",
+    "West Penn Power is the utility listed for most of Centre County, but not all of it. Clarence, Moshannon and Sandy Ridge are listed only under Penelec. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Chester": {
+  "slug": "chester",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "PECO is the utility listed for most of Chester County, but not all of it. Suplee is listed only under PPL; Saint Peters is listed only under Met-Ed. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Clarion": {
+  "slug": "clarion",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Clarion County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Clearfield": {
+  "slug": "clearfield",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Mobile homes",
+   "body": [
+    "Clearfield County has the 11th-highest share of mobile homes of any Pennsylvania county: 11.2% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Clinton": {
+  "slug": "clinton",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "PPL is the utility listed for most of Clinton County, but not all of it. Lamar, Mackeyville and Salona are listed only under West Penn Power. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Columbia": {
+  "slug": "columbia",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "UGI Electric",
+   "body": [
+    "UGI Electric, one of Pennsylvania's smaller regulated utilities, is listed for 3 of 13 ZIP codes here. As a regulated utility, its customers would likely be covered by the community solar bill too."
+   ]
+  }
+ },
+ "Crawford": {
+  "slug": "crawford",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mobile homes",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Crawford County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Crawford County has the eighth-highest share of mobile homes of any Pennsylvania county: 11.9% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Cumberland": {
+  "slug": "cumberland",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in 10 of 23 ZIP codes in Cumberland County, usually alongside PPL or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Dauphin": {
+  "slug": "dauphin",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Renters and rowhomes",
+   "body": [
+    "About 36.9% of households in Dauphin County rent their home, roughly 44,800 households. That is the third-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill.",
+    "22.4% of homes in Dauphin County are rowhomes, townhouses or other attached houses, the sixth-highest share in the state (18.8% statewide). Attached homes tend to have small or shared roofs, which makes community solar a better fit than rooftop panels for many of them."
+   ]
+  }
+ },
+ "Elk": {
+  "slug": "elk",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 2,700 households in Elk County rent their home (20.5%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Erie": {
+  "slug": "erie",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Renters and rural electric co-ops",
+   "body": [
+    "About 31.9% of households in Erie County rent their home, roughly 35,300 households. That is the eighth-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill.",
+    "A rural electric co-op is listed in 17 of 49 ZIP codes in Erie County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Fayette": {
+  "slug": "fayette",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 15,200 households in Fayette County rent their home (27.6%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Forest": {
+  "slug": "forest",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mobile homes",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Forest County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Forest County has the fifth-highest share of mobile homes of any Pennsylvania county: 14.1% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Franklin": {
+  "slug": "franklin",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and more than one utility",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Franklin County, usually alongside West Penn Power or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "West Penn Power is the utility listed for most of Franklin County, but not all of it. Amberson is listed only under Penelec. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Fulton": {
+  "slug": "fulton",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mobile homes",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Fulton County, usually alongside West Penn Power or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Fulton County has the fourth-highest share of mobile homes of any Pennsylvania county: 14.5% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Greene": {
+  "slug": "greene",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Mobile homes and one utility",
+   "body": [
+    "Greene County has the second-highest share of mobile homes of any Pennsylvania county: 16.2% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power.",
+    "Every ZIP code in Greene County lists West Penn Power, so community solar credits for residents here would come through West Penn Power."
+   ]
+  }
+ },
+ "Huntingdon": {
+  "slug": "huntingdon",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mobile homes",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Huntingdon County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Huntingdon County has the ninth-highest share of mobile homes of any Pennsylvania county: 11.7% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Indiana": {
+  "slug": "indiana",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Indiana County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Jefferson": {
+  "slug": "jefferson",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in 8 of 25 ZIP codes in Jefferson County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Juniata": {
+  "slug": "juniata",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in 5 of 11 ZIP codes in Juniata County, usually alongside PPL or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Lackawanna": {
+  "slug": "lackawanna",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 34.6% of households in Lackawanna County rent their home, roughly 30,500 households. That is the fifth-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Lawrence": {
+  "slug": "lawrence",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 8,700 households in Lawrence County rent their home (24.2%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Lebanon": {
+  "slug": "lebanon",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "Met-Ed is the utility listed for most of Lebanon County, but not all of it. Kleinfeltersville is listed only under PPL. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Lehigh": {
+  "slug": "lehigh",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "Rowhomes and renters",
+   "body": [
+    "24.6% of homes in Lehigh County are rowhomes, townhouses or other attached houses, the fourth-highest share in the state (18.8% statewide). Attached homes tend to have small or shared roofs, which makes community solar a better fit than rooftop panels for many of them.",
+    "About 34.4% of households in Lehigh County rent their home, roughly 49,700 households. That is the sixth-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Luzerne": {
+  "slug": "luzerne",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "UGI Electric and renters",
+   "body": [
+    "UGI Electric, one of Pennsylvania's smaller regulated utilities, is listed for 27 of 58 ZIP codes here. As a regulated utility, its customers would likely be covered by the community solar bill too.",
+    "About 32.2% of households in Luzerne County rent their home, roughly 43,500 households. That is the seventh-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Lycoming": {
+  "slug": "lycoming",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "More than one utility and rural electric co-ops",
+   "body": [
+    "PPL is the utility listed for most of Lycoming County, but not all of it. Ralston is listed only under Penelec. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects.",
+    "A rural electric co-op is listed in 8 of 22 ZIP codes in Lycoming County, usually alongside PPL or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "McKean": {
+  "slug": "mckean",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "Penelec is the utility listed for most of McKean County, but not all of it. Crosby, Hazel Hurst and Mount Jewett are listed only under West Penn Power. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Mercer": {
+  "slug": "mercer",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in 6 of 19 ZIP codes in Mercer County, usually alongside Penn Power or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Mifflin": {
+  "slug": "mifflin",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Mifflin County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Monroe": {
+  "slug": "monroe",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "PPL is the utility listed for most of Monroe County, but not all of it. Delaware Water Gap, Marshalls Creek and Minisink Hills are listed only under Met-Ed. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Montour": {
+  "slug": "montour",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters and one utility",
+   "body": [
+    "About 31.5% of households in Montour County rent their home, roughly 2,500 households. That is the ninth-highest share of any Pennsylvania county. Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill.",
+    "Every ZIP code in Montour County lists PPL, so community solar credits for residents here would come through PPL."
+   ]
+  }
+ },
+ "Northampton": {
+  "slug": "northampton",
+  "farmFaq": false,
+  "localNote": {
+   "heading": "More than one utility",
+   "body": [
+    "Met-Ed is the utility listed for most of Northampton County, but not all of it. Bethlehem, Cherryville and Treichlers are listed only under PPL. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Northumberland": {
+  "slug": "northumberland",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rowhomes and Citizens' Electric",
+   "body": [
+    "20.4% of homes in Northumberland County are rowhomes, townhouses or other attached houses, the eighth-highest share in the state (18.8% statewide). Attached homes tend to have small or shared roofs, which makes community solar a better fit than rooftop panels for many of them.",
+    "Citizens' Electric, one of Pennsylvania's smaller regulated utilities, is listed for 2 of 25 ZIP codes here. As a regulated utility, its customers would likely be covered by the community solar bill too."
+   ]
+  }
+ },
+ "Perry": {
+  "slug": "perry",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "More than one utility and mostly homeowners",
+   "body": [
+    "PPL is the utility listed for most of Perry County, but not all of it. New Germantown is listed only under Penelec. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects.",
+    "Perry County has one of the lowest shares of renters in Pennsylvania, 18.2%. Most households own their homes, but not every roof gets enough sun for panels, and about 3,300 households still rent."
+   ]
+  }
+ },
+ "Pike": {
+  "slug": "pike",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Pike County Light & Power and more than one utility",
+   "body": [
+    "Pike County Light & Power, one of Pennsylvania's smaller regulated utilities, is listed for 4 of 15 ZIP codes here. As a regulated utility, its customers would likely be covered by the community solar bill too.",
+    "PPL is the utility listed for most of Pike County, but not all of it. Bushkill, Tamiment and Unity House are listed only under Met-Ed. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Potter": {
+  "slug": "potter",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mobile homes",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Potter County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Potter County has the seventh-highest share of mobile homes of any Pennsylvania county: 13.4% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power."
+   ]
+  }
+ },
+ "Schuylkill": {
+  "slug": "schuylkill",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rowhomes",
+   "body": [
+    "25.5% of homes in Schuylkill County are rowhomes, townhouses or other attached houses, the third-highest share in the state (18.8% statewide). Attached homes tend to have small or shared roofs, which makes community solar a better fit than rooftop panels for many of them."
+   ]
+  }
+ },
+ "Snyder": {
+  "slug": "snyder",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 3,600 households in Snyder County rent their home (24.4%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Somerset": {
+  "slug": "somerset",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and mostly homeowners",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Somerset County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Somerset County has one of the lowest shares of renters in Pennsylvania, 19.6%. Most households own their homes, but not every roof gets enough sun for panels, and about 5,800 households still rent."
+   ]
+  }
+ },
+ "Sullivan": {
+  "slug": "sullivan",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "A small county and rural electric co-ops",
+   "body": [
+    "With about 5,900 residents, Sullivan County is one of the five smallest counties in Pennsylvania by population.",
+    "A rural electric co-op is listed in 4 of 9 ZIP codes in Sullivan County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Susquehanna": {
+  "slug": "susquehanna",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and more than one utility",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Susquehanna County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Penelec is the utility listed for most of Susquehanna County, but not all of it. Clifford, Forest City and Herrick Center are listed only under PPL. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ },
+ "Tioga": {
+  "slug": "tioga",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Mobile homes and rural electric co-ops",
+   "body": [
+    "Tioga County has the highest share of mobile homes of any Pennsylvania county: 16.6% of homes, compared with 3.5% statewide. Rooftop panels are often impractical on mobile homes, so community solar could be one of the few ways those households can use solar power.",
+    "A rural electric co-op is listed in nearly every ZIP code in Tioga County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Union": {
+  "slug": "union",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Citizens' Electric",
+   "body": [
+    "Citizens' Electric, one of Pennsylvania's smaller regulated utilities, is listed for 5 of 14 ZIP codes here. As a regulated utility, its customers would likely be covered by the community solar bill too."
+   ]
+  }
+ },
+ "Venango": {
+  "slug": "venango",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops",
+   "body": [
+    "A rural electric co-op is listed in nearly every ZIP code in Venango County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op."
+   ]
+  }
+ },
+ "Warren": {
+  "slug": "warren",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 3,300 households in Warren County rent their home (20.5%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Washington": {
+  "slug": "washington",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 21,200 households in Washington County rent their home (23.9%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Wayne": {
+  "slug": "wayne",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "More than one utility and mostly homeowners",
+   "body": [
+    "PPL is the utility listed for most of Wayne County, but not all of it. Lake Como, Orson and Poyntelle are listed only under Penelec. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects.",
+    "Wayne County has one of the lowest shares of renters in Pennsylvania, 19.5%. Most households own their homes, but not every roof gets enough sun for panels, and about 4,100 households still rent."
+   ]
+  }
+ },
+ "Westmoreland": {
+  "slug": "westmoreland",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Renters",
+   "body": [
+    "About 33,500 households in Westmoreland County rent their home (21.6%). Renters generally can't put panels on a building they don't own, but under HB 504 they could subscribe to community solar if they pay their own electric bill."
+   ]
+  }
+ },
+ "Wyoming": {
+  "slug": "wyoming",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and UGI Electric",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in Wyoming County, usually alongside Penelec or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "UGI Electric, one of Pennsylvania's smaller regulated utilities, is listed for 2 of 9 ZIP codes here. As a regulated utility, its customers would likely be covered by the community solar bill too."
+   ]
+  }
+ },
+ "York": {
+  "slug": "york",
+  "farmFaq": true,
+  "localNote": {
+   "heading": "Rural electric co-ops and more than one utility",
+   "body": [
+    "A rural electric co-op is listed in most ZIP codes in York County, usually alongside Met-Ed or another larger utility. Co-ops tend to serve the more rural parts of a ZIP code, and HB 504 as written likely would not cover co-op members, so check whether your bill comes from a co-op.",
+    "Met-Ed is the utility listed for most of York County, but not all of it. Craley and East Prospect are listed only under PPL. Community solar credits would come through whichever utility sends your bill, so neighbors in different parts of the county could subscribe to different projects."
+   ]
+  }
+ }
+}
