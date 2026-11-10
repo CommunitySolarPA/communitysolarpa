@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Signup from '../../components/Signup.astro';
 import BillEstimator from '../../components/BillEstimator.astro';
 import { utilities, countiesFor, ptcAsOf, type Utility } from '../../data/utilities';
+const countySlug = (n: string) => n.toLowerCase().replace(/\s+/g, '-');
 
 export function getStaticPaths() {
   return utilities.map((u) => ({ params: { slug: u.slug }, props: { u } }));
@@ -60,7 +61,7 @@ const jsonLd = {
 ---
 <Base
   title={`Community solar for ${u.name} customers`}
-  description={`How community solar would work for ${u.name} customers in Pennsylvania: the ${u.name} price to compare, which counties ${u.name} serves, and where the state's community solar bill stands.`}
+  description={`How community solar would work for ${u.name} customers in Pennsylvania: price to compare, counties served, bill credits, and the state bill.`}
 
   breadcrumbs={[{ name: 'Utility guides', href: '/utilities' }, { name: u.name, href: `/utilities/${u.slug}` }]}
   about={aboutUtility}
@@ -104,10 +105,10 @@ const jsonLd = {
     <div class="wrap prose">
       <h2 style="margin-top:0">Where {u.name} provides power</h2>
       {main.length > 0 && (
-        <p><strong>Most or all of:</strong> {main.join(', ')} {main.length === 1 ? 'County' : 'counties'}.</p>
+        <p><strong>Most or all of:</strong> {main.map((n, i) => <>{i > 0 && ', '}<a href={`/counties/${countySlug(n)}`}>{n}</a></>)} {main.length === 1 ? 'County' : 'counties'}.</p>
       )}
       {part.length > 0 && (
-        <p><strong>Parts of:</strong> {part.join(', ')} {part.length === 1 ? 'County' : 'counties'}.</p>
+        <p><strong>Parts of:</strong> {part.map((n, i) => <>{i > 0 && ', '}<a href={`/counties/${countySlug(n)}`}>{n}</a></>)} {part.length === 1 ? 'County' : 'counties'}.</p>
       )}
       <p><strong>Communities include:</strong> {u.cities.join(', ')}.</p>
       <p>

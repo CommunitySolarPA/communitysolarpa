@@ -79,7 +79,8 @@ const utilData = Object.fromEntries([
       var estimated = codes.indexOf('?') !== -1;
       var coop = codes.indexOf('o') !== -1;
       var list = codes.replace(/[?o]/g, '').split('').filter(function (c) { return utilData[c]; });
-      var place = esc(city) + (county ? ', ' + esc(county) + ' County' : '');
+      var countyUrl = county ? '/counties/' + county.toLowerCase().replace(/\s+/g, '-') : '';
+      var place = esc(city) + (county ? ', <a href="' + countyUrl + '">' + esc(county) + ' County</a>' : '');
       var html = '<div class="result card"><div class="eyebrow">' + esc(zip) + ' · ' + place + '</div>';
 
       if (list.length === 0) {
@@ -98,6 +99,7 @@ const utilData = Object.fromEntries([
         if (coop) html += '<p class="note">Some homes in this ZIP code get power from an electric co-op or a borough utility instead.</p>';
         if (estimated) html += '<p class="note">This ZIP code is mostly P.O. boxes, so we estimated from the county. Your bill will confirm it.</p>';
       }
+      if (county) html += '<p><a href="' + countyUrl + '">See the ' + esc(county) + ' County community solar guide →</a></p>';
       html += '<div class="next"><p><strong>Community solar isn’t available in Pennsylvania yet.</strong> The bill to create it, HB 504, is <a href="/pennsylvania">pending in the State Senate</a>. Two ways to help it along:</p>' +
         '<p><a class="btn" href="#notify">Get notified for ' + esc(zip) + '</a> &nbsp; <a class="btn secondary" href="https://www.palegis.us/find-my-legislator" rel="noopener" target="_blank">Find your state senator</a></p></div>';
       html += '</div>';
