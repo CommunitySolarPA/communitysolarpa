@@ -1,11 +1,66 @@
 ---
 import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
+
+// Answers about Pennsylvania describe HB 504 as passed by the State House (PN 1628).
+const faqs = [
+  {
+    q: 'Would I still get my electricity from my current utility?',
+    a: "Yes. Your utility still delivers your power, sends your bill, and handles outages and repairs. Community solar adds a credit to that bill. It doesn't replace your utility.",
+  },
+  {
+    q: 'Would community solar keep my lights on during a power outage?',
+    a: "No. The solar project feeds the grid, not your home, so it isn't backup power. If your neighborhood loses power, your home does too, just as it does today.",
+  },
+  {
+    q: 'Would it cost anything to join?',
+    a: "Under HB 504 as passed by the State House, subscriptions couldn't include any upfront or sign-on fees or credit checks, and nothing gets installed at your home.",
+  },
+  {
+    q: 'How much would I save?',
+    a: "The bill requires the cost of a subscription to be less than the value of the bill credit it earns, so subscribers come out ahead. The exact savings would depend on rules the Pennsylvania Public Utility Commission writes and the terms each project offers. Other states guarantee minimum savings, from 5% in New York to 15% in New Jersey and 20% in Massachusetts. Your credit would also change month to month, since solar projects produce more in summer than in winter.",
+  },
+  {
+    q: 'Would I get two bills?',
+    a: "No. The bill calls for net crediting: your utility would put the subscription fee and the solar credit on your regular monthly bill and show you the difference. Your utility would keep billing for everything else, just as it does now.",
+  },
+  {
+    q: 'Can I cancel? Are there cancellation fees?',
+    a: "You could leave a subscription. The bill does not allow termination or cancellation fees.",
+  },
+  {
+    q: 'What if I miss a subscription payment?',
+    a: "You could lose your subscription, but the bill says missing a subscription payment can't affect your electric service.",
+  },
+  {
+    q: 'What if I move?',
+    a: "You could take your subscription with you if you move within the same utility's service area. A move to an area served by a different utility would mean starting a new subscription there.",
+  },
+  {
+    q: 'Would low-income households be included?',
+    a: "Yes. The bill directs the Public Utility Commission to increase participation by low-income households (at or below 150% of the federal poverty line) and to use available federal money to give income-qualified households larger guaranteed savings.",
+  },
+  {
+    q: 'How would I know what I am signing up for?',
+    a: "The Public Utility Commission would write consumer protection rules and create a standard disclosure form, in English and Spanish, that companies would have to give you before you subscribe. It would cover future costs and benefits and your rights.",
+  },
+  {
+    q: 'Can I sign up today?',
+    a: "Not yet. Pennsylvania has no community solar program until the State Senate passes the bill and the Governor signs it. Join our list and we'll email you when that changes.",
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
 ---
 <Base
   title="What is community solar?"
   description="A plain-English guide to community solar: how shared solar projects work, who can join, how bill credits work, and what it could mean for Pennsylvania."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section>
     <div class="wrap prose">
       <div class="eyebrow">The basics</div>
@@ -59,6 +114,17 @@ import Signup from '../components/Signup.astro';
         <a href="/pennsylvania">Read where it stands →</a>
       </p>
 
+      <h2 id="faq">Common questions</h2>
+      <p class="note">Answers about Pennsylvania describe <a href="/pennsylvania">HB 504</a> as passed by the State House. Details could change before it becomes law.</p>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
       <div class="callout">
         <strong>A note on savings:</strong> how much subscribers save, and how sign-up works, will depend
         on the rules Pennsylvania adopts. We'll explain the details here once they're known.
@@ -67,3 +133,10 @@ import Signup from '../components/Signup.astro';
   </section>
   <Signup />
 </Base>
+
+<style>
+  .faq details { border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .faq summary { cursor: pointer; font-weight: 600; color: var(--green-900); }
+  .faq details p { margin: 10px 0 0; }
+  .note { font-size: .9rem; color: var(--muted); }
+</style>

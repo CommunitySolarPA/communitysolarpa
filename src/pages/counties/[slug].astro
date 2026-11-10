@@ -63,6 +63,14 @@ const faqs = [
         a: `Not necessarily. A project has to connect to the same utility as its subscribers, so it could be anywhere in ${main.name}'s service area. Projects can go on rooftops, warehouses, parking lots, former industrial sites and open land, and local zoning decides where they can be built.`,
       },
   {
+    q: `Would community solar keep my power on during an outage?`,
+    a: `No. The solar project feeds the grid, not your home, so it isn't backup power. If your area loses power, your home does too, just as it does today.`,
+  },
+  {
+    q: `Would it cost anything to join?`,
+    a: `Under HB 504 as passed by the State House, subscriptions couldn't include upfront or sign-on fees, credit checks, or cancellation fees, and the subscription has to cost less than the credit it earns. See more <a href="/what-is-community-solar#faq">common questions</a>.`,
+  },
+  {
     q: `Can I sign up today?`,
     a: `Not yet. Pennsylvania has no community solar program until the State Senate passes the bill and the Governor signs it. Join our list and we'll email you when that changes.`,
   },
@@ -214,7 +222,7 @@ const jsonLd = {
         {faqs.map((f) => (
           <details>
             <summary>{f.q}</summary>
-            <p>{f.a}</p>
+            <p set:html={f.a} />
           </details>
         ))}
       </div>
