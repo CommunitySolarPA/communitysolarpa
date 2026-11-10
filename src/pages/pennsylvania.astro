@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Signup from '../components/Signup.astro';
 
 // Update this date every time the status on this page is re-checked.
-const lastReviewed = 'October 16, 2026';
+const lastReviewed = 'November 9, 2026';
 
 // Structured data for the two bills this page tracks.
 const pa = { '@type': 'State', name: 'Pennsylvania', sameAs: 'https://en.wikipedia.org/wiki/Pennsylvania' };
@@ -11,18 +11,20 @@ const bills = [
   {
     '@type': 'Legislation',
     '@id': 'https://communitysolarpa.org/pennsylvania/#hb504',
-    name: 'Pennsylvania House Bill 504 (2025-2026 session): community solar',
+    name: 'Pennsylvania House Bill 504 (2025-2026 session): Community Energy Act',
+    alternateName: 'Community Energy Act',
     legislationIdentifier: 'HB 504',
     legislationType: 'Bill',
     legislationJurisdiction: pa,
     author: { '@type': 'Person', name: 'Peter Schweyer', jobTitle: 'Pennsylvania State Representative' },
     url: 'https://www.palegis.us/legislation/bills/2025/hb504',
+    legislationDate: '2025-04-23',
     inLanguage: 'en-US',
   },
   {
     '@type': 'Legislation',
     '@id': 'https://communitysolarpa.org/pennsylvania/#sb504',
-    name: 'Pennsylvania Senate Bill 504 (2025-2026 session): community solar',
+    name: 'Pennsylvania Senate Bill 504 (2025-2026 session): Community Energy Act',
     legislationIdentifier: 'SB 504',
     legislationType: 'Bill',
     legislationJurisdiction: pa,
@@ -33,8 +35,8 @@ const bills = [
 ];
 ---
 <Base
-  title="Pennsylvania community solar status"
-  description="Where Pennsylvania's community solar legislation (HB 504 / SB 504) stands, what it would do, and what happens next."
+  title="Where Pennsylvania Stands on Community Solar (HB 504)"
+  description="Where Pennsylvania's community solar bill (HB 504) stands after the House vote, the Nov 30, 2026 deadline and the new Senate majority, and what the bill does."
   about={{ '@id': 'https://communitysolarpa.org/pennsylvania/#hb504' }}
   schema={bills}
 >
@@ -42,60 +44,162 @@ const bills = [
     <div class="wrap prose">
       <div class="eyebrow">Policy tracker</div>
       <h1>Where Pennsylvania stands on community solar</h1>
-      <p><span class="status">Passed the House · Pending in the Senate</span></p>
+      <p><span class="status">Passed the House · Stalled in the Senate · Expires Nov 30, 2026</span></p>
       <p class="updated">Last reviewed: {lastReviewed}</p>
 
+      <div class="callout">
+        <strong>The short version</strong>
+        <ul>
+          <li>Pennsylvania has no community solar program today.</li>
+          <li>The bill to create one, HB 504 (the Community Energy Act), passed the State House 114 to 89 in May 2025. The State Senate has not voted on it or its Senate twin, SB 504.</li>
+          <li>The 2025-2026 legislative session ends <strong>November 30, 2026</strong>. Bills that haven't become law by then expire and have to be introduced again.</li>
+          <li>The November 2026 election changed control of the State Senate. A new session starts <strong>January 5, 2027</strong>, and supporters expect to bring the bill back then.</li>
+        </ul>
+      </div>
+
+      <h2>Where we stand</h2>
+
+      <h3>In the State House: passed</h3>
       <p>
-        Pennsylvania doesn't have a statewide community solar program today. House Bill 504
-        would create one. It passed the State House in May 2025 and now needs the State Senate
-        to act.
+        HB 504 was introduced on April 23, 2025 by Rep. Peter Schweyer, with 46 co-sponsors. It came out of the
+        House Consumer Protection, Technology and Utilities Committee on May 2, was amended on the House floor on
+        May 6, and passed on May 7, 2025 by a vote of 114 to 89.
       </p>
+
+      <h3>In the State Senate: no action since May 2025</h3>
+      <p>
+        The Senate sent HB 504 to its Consumer Protection and Professional Licensure Committee on May 22, 2025. The
+        Senate's own version, SB 504 from Sen. Judy Schwank, went to the same committee on May 12, 2025. As of
+        {lastReviewed}, the official record shows no committee vote or other action on either bill since then.
+      </p>
+
+      <h3>The deadline: November 30, 2026</h3>
+      <p>
+        Pennsylvania's legislature works in two-year sessions. When the 2025-2026 session ends on November 30, 2026,
+        any bill that hasn't passed both chambers and been signed by the Governor expires. To keep going, community
+        solar would need a new bill, with a new number, in the 2027-2028 session. That new bill would start the
+        process over: committee review and votes in both the House and the Senate, then the Governor's signature.
+      </p>
+
+      <h3>What changed in the November 2026 election</h3>
+      <p>
+        In the November 3, 2026 election, Democrats won a 26 to 24 majority in the State Senate, which Republicans
+        had led since 1994. Democrats also kept their majority in the State House, and Gov. Josh Shapiro won
+        re-election. It's the first time since 1993 that Democrats have controlled the House, the Senate and the
+        governor's office at the same time.
+      </p>
+      <p>
+        That matters for community solar because the bill was part of the Governor's "Lightning Plan" energy
+        package announced in March 2025, and both versions were introduced by Democratic legislators. Clean energy
+        advocates, including Vote Solar, have said they expect the energy bills the House already passed, community
+        solar among them, to be reintroduced and moved quickly in early 2027.
+      </p>
+      <p>
+        None of that guarantees passage. A new bill could be changed along the way, and it still needs majority
+        votes in both chambers. We'll track it here.
+      </p>
+
+      <h3>What to watch next</h3>
+      <ol>
+        <li><strong>November 30, 2026:</strong> the current session ends. Unless the Senate acts before then, HB 504 and SB 504 expire.</li>
+        <li><strong>January 5, 2027:</strong> the new session begins and newly elected members are sworn in. Watch for a community solar bill to be reintroduced, and for its new bill number.</li>
+        <li><strong>Committee assignments:</strong> which Senate committee gets the new bill, and whether it gets a hearing and a vote.</li>
+        <li><strong>If it becomes law:</strong> under the House-passed bill, the law would take effect 60 days after signing. The Pennsylvania Public Utility Commission would then have 180 days to set the bill credit and issue temporary rules, and 365 days for permanent rules. Projects would still need to be approved and built before anyone could subscribe.</li>
+      </ol>
 
       <h2>Timeline</h2>
       <ul class="timeline">
-        <li>
-          <strong>2025: Bills introduced</strong>
-          HB 504 (sponsored by Rep. Peter Schweyer) and the companion SB 504 (sponsored by
-          Sen. Judy Schwank) are introduced in the 2025–2026 legislative session.
-        </li>
-        <li>
-          <strong>May 2025: Passed the State House</strong>
-          HB 504 passed the Pennsylvania House with bipartisan support.
-        </li>
-        <li class="pending">
-          <strong>Next: State Senate</strong>
-          The bill needs to pass the Senate and be signed by the Governor. The 2025–2026 session
-          ends November 30, 2026. Bills that haven't passed by then have to be reintroduced.
-        </li>
+        <li><strong>March 11, 2025:</strong> Gov. Shapiro announces his "Lightning Plan," including a "Community Energy" proposal.</li>
+        <li><strong>April 23, 2025:</strong> HB 504 introduced in the House (Rep. Peter Schweyer).</li>
+        <li><strong>May 7, 2025:</strong> HB 504 passes the House, 114 to 89.</li>
+        <li><strong>May 12, 2025:</strong> SB 504 (Sen. Judy Schwank) referred to the Senate Consumer Protection and Professional Licensure Committee.</li>
+        <li><strong>May 22, 2025:</strong> HB 504 referred to the same Senate committee. No further action recorded.</li>
+        <li><strong>November 3, 2026:</strong> Democrats win a Senate majority.</li>
+        <li class="pending"><strong>November 30, 2026:</strong> the 2025-2026 session ends.</li>
+        <li class="pending"><strong>January 5, 2027:</strong> the 2027-2028 session begins.</li>
       </ul>
 
       <h2>What the bill would do</h2>
-      <ul>
-        <li><strong>Allow community energy projects</strong>, mainly solar, to be built and serve subscribers in Pennsylvania.</li>
-        <li><strong>Let utility customers subscribe</strong> to a share of a local project and receive a credit on their electric bill.</li>
-        <li><strong>Encourage participation by low- and moderate-income households</strong> and their communities.</li>
-        <li><strong>Keep costs on participants</strong>, so customers who don't subscribe don't pay for the program.</li>
-      </ul>
+      <p>Here's what HB 504, the Community Energy Act, says as passed by the State House (printer's number 1628). A new bill in 2027 could be different.</p>
 
-      <h2>What happens if it passes</h2>
+      <h3>Who could build projects</h3>
       <p>
-        If the bill becomes law, state regulators would still need to write the detailed program
-        rules, such as how bill credits are calculated and how sign-up works. Projects would then
-        need to be approved and built before subscriptions open. We'll explain each step here as
-        it happens.
+        "Community energy organizations" could build, own and run projects in Pennsylvania that connect to a
+        regulated utility's grid. They could also use a "subscriber administrator" to sign up and manage subscribers.
       </p>
 
-      <div class="callout">
-        Want to know when there's news? <a href="#notify">Join the update list</a>. We email only when something meaningful changes.
-      </div>
+      <h3>How big projects could be</h3>
+      <p>
+        Mostly solar, and also renewable natural gas. Projects could be up to 5 megawatts, or up to 20 megawatts on
+        rooftops and former industrial sites (brownfields). The same company couldn't build more than one project on the same or
+        neighboring parcels of land.
+      </p>
+
+      <h3>Who could subscribe</h3>
+      <ul>
+        <li>Any customer of the utility the project connects to, including renters.</li>
+        <li>At least half of each project would have to go to small subscriptions (25 kilowatts or less, the size of a household) or to farms.</li>
+        <li>No single subscriber could take more than half of a project, except an apartment building with one master meter, or a farm.</li>
+        <li>A project would need to be at least half subscribed before it could start earning credits for subscribers.</li>
+      </ul>
+
+      <h3>How bill credits would work</h3>
+      <ul>
+        <li>Subscribers get a credit on their utility bill for every kilowatt hour their share produces. The Public Utility Commission would set the credit's value.</li>
+        <li>Credits can offset any part of the bill except the per-kWh and demand-based distribution charges.</li>
+        <li>Extra credits roll over to the next month, and anything left is applied to your final bill if you leave.</li>
+        <li>You could take your subscription with you if you move within the same utility's area.</li>
+        <li>One bill: the utility puts the subscription fee and the credit on your regular bill and shows the difference (net crediting).</li>
+      </ul>
+
+      <h3>Consumer protections</h3>
+      <ul>
+        <li>The subscription has to cost less than the credit it earns, so subscribers come out ahead.</li>
+        <li>No upfront or sign-on fees, and no credit checks.</li>
+        <li>No cancellation or termination fees.</li>
+        <li>Missing a subscription payment could cost you the subscription, but can't affect your electric service.</li>
+        <li>The Public Utility Commission would write consumer protection rules and a standard disclosure form, in English and Spanish, that companies must give you before you sign up.</li>
+      </ul>
+
+      <h3>Low-income households</h3>
+      <p>
+        The bill directs the Public Utility Commission to increase participation by low-income households (at or
+        below 150% of the federal poverty line) and to use available federal money to give income-qualified
+        households larger guaranteed savings.
+      </p>
+
+      <h3>Protecting customers who don't subscribe</h3>
+      <p>
+        The law would be read to keep costs to non-subscribers as low as possible, and the Commission would have to
+        maximize benefits to every customer class, whether or not they take part. Utilities would buy any
+        unsubscribed power from a project at their wholesale energy cost.
+      </p>
+
+      <h3>Jobs</h3>
+      <p>Projects that earn bill credits would have to pay Pennsylvania prevailing wages to construction workers.</p>
+
+      <p><a href="/what-is-community-solar#faq">More common questions about community solar →</a></p>
+
+      <h2>What you can do</h2>
+      <ul>
+        <li><a href="https://www.palegis.us/find-my-legislator" rel="noopener">Find your state senator and representative</a> and tell them where you stand on community solar.</li>
+        <li><a href="/zip-lookup">Check your ZIP code</a> to see your utility and what a subscription would mean for you.</li>
+        <li><a href="#notify">Join the update list</a>. We email only when something meaningful changes, like the bill being reintroduced.</li>
+      </ul>
 
       <h2>Sources</h2>
-      <ul>
-        <li><a href="https://www.cpbj.com/community-solar-bill-passes-in-pa-house/" rel="noopener">Central Penn Business Journal: Community solar bill passes in Pa. House (May 2025)</a></li>
-        <li><a href="https://www.pahouse.com/NorthEastDelegation/InTheNews/NewsRelease/?id=138514" rel="noopener">PA House Democrats: Schweyer bill for shared community energy clears PA House</a></li>
-        <li><a href="https://www.palegis.us/legislation/bills/2025/sb504" rel="noopener">Pennsylvania General Assembly: SB 504 bill information</a></li>
+      <ul class="sources">
+        <li><a href="https://www.palegis.us/legislation/bills/2025/hb504" rel="noopener">Pennsylvania General Assembly: HB 504 bill information and history</a></li>
+        <li><a href="https://www.palegis.us/legislation/bills/text/HTM/2025/0/HB0504/PN1628" rel="noopener">Pennsylvania General Assembly: HB 504 text as passed by the House (PN 1628)</a></li>
+        <li><a href="https://www.palegis.us/legislation/bills/2025/sb504" rel="noopener">Pennsylvania General Assembly: SB 504 bill information and history</a></li>
+        <li><a href="https://www.palegis.us/house/roll-calls/summary?sessYr=2025&sessInd=0&rcNum=216" rel="noopener">Pennsylvania House: HB 504 final passage roll call (May 7, 2025)</a></li>
+        <li><a href="https://www.pa.gov/governor/newsroom/2025-press-releases/governor-shapiro-launches-legislative-push-for--lightning-plan--" rel="noopener">Office of the Governor: Governor Shapiro launches legislative push for "Lightning Plan" (March 11, 2025)</a></li>
+        <li><a href="https://www.spotlightpa.org/news/2026/11/pennsylvania-house-election-results-legislature-control-elections/" rel="noopener">Spotlight PA: Democrats flip PA Senate, giving Shapiro a powerful trifecta (November 3, 2026)</a></li>
+        <li><a href="https://www.inquirer.com/politics/pennsylvania/democrat-republican-control-harrisburg-pennsylvania-midterm-election-results-winners-20261104.html" rel="noopener">Philadelphia Inquirer: Democrats win trifecta control of Pennsylvania for the first time since 1993 (November 4, 2026)</a></li>
+        <li><a href="https://votesolar.org/2027-is-the-year-a-vetted-plan-to-modernize-pennsylvanias-energy-system.htm" rel="noopener">Vote Solar: 2027 is the Year (October 22, 2026)</a></li>
       </ul>
     </div>
   </section>
   <Signup />
 </Base>
+

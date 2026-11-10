@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "check:content": "node scripts/check-no-em-dash.mjs",
-    "build": "node scripts/check-no-em-dash.mjs && astro build && node scripts/build-llms.mjs",
+    "build": "(git fetch --unshallow --quiet 2>/dev/null || true) && node scripts/check-no-em-dash.mjs && astro build && node scripts/build-llms.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
