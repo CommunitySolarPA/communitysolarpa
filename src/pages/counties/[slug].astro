@@ -70,7 +70,7 @@ const jsonLd = {
 
   <div class="hero">
     <div class="wrap">
-      <div class="eyebrow">County guide · {county}</div>
+      <div class="eyebrow"><a href="/counties">County guides</a> · {county}</div>
       <h1>Community solar in {county}</h1>
       <p class="lede">
         {county} is home to about {fmt(round(c.population, 1000))} people in {fmt(round(c.households, 1000))} households.
@@ -201,6 +201,7 @@ const jsonLd = {
 </Base>
 
 <style>
+  .hero .eyebrow a { color: inherit; text-decoration: none; }
   .facts { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   .facts .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
   .facts .big { font-family: var(--serif); font-size: 2rem; color: var(--green-900); line-height: 1.2; margin: 6px 0; }

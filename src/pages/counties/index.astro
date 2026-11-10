@@ -1,0 +1,164 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import countyUtils from '../../data/county-utils.json';
+import { byCode, smallUtilities } from '../../data/utilities';
+import { counties } from '../../data/counties';
+
+// Every Pennsylvania county, with the utilities that serve it (from DOE/OpenEI ZIP data).
+// Counties with a finished guide link to it; the rest are listed until their guides are built.
+const small = Object.fromEntries(smallUtilities.map((s) => [s.code, s.name]));
+const nameFor = (k: string) => byCode[k]?.name ?? small[k] ?? (k === 'o' ? 'local co-ops or boroughs' : null);
+const guides = new Map(counties.map((c) => [c.name, c.slug]));
+
+const list = Object.entries(countyUtils as Record<string, Record<string, number>>)
+  .map(([name, shares]) => {
+    const sorted = Object.entries(shares).sort((a, b) => b[1] - a[1]);
+    const main = sorted.filter(([, s]) => s >= 0.5).map(([k]) => nameFor(k)).filter(Boolean) as string[];
+    const part = sorted.filter(([, s]) => s < 0.5).map(([k]) => nameFor(k)).filter(Boolean) as string[];
+    return { name, slug: guides.get(name), main, part };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const letters = [...new Set(list.map((c) => c.name[0]))];
+---
+<Base
+  title="Community solar by county in Pennsylvania"
+  description="Find your Pennsylvania county to see which electric utility serves it and what community solar could mean for households, renters, and farms in your area."
+>
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">County guides</div>
+      <h1>Community solar, county by county</h1>
+      <p class="lede">
+        Pennsylvania has 67 counties, and community solar would look a little different in each one. Your utility,
+        how many of your neighbors rent, and who represents you in Harrisburg all shape what it could mean where you live.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap prose">
+      <h2 style="margin-top:0">Find your county</h2>
+      <p>
+        Most people know their county from their mailing address or property tax bill. If you're not sure, enter
+        your ZIP code and we'll show you your county and your electric utility.
+      </p>
+      <form class="zip-mini" action="/zip-lookup" method="get">
+        <label for="county-zip" class="sr">ZIP code</label>
+        <input id="county-zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="Enter ZIP code" autocomplete="postal-code" required />
+        <button type="submit" class="btn primary">Look up</button>
+      </form>
+
+      <h2>How community solar could affect your area</h2>
+      <p>If Pennsylvania's community solar bill (HB 504) becomes law, here's what would depend on where you live:</p>
+      <ul>
+        <li>
+          <strong>Your utility decides how you'd get credit.</strong> You'd subscribe to a project connected to the
+          utility that delivers your power, and the credits would show up on that utility's bill. Many counties are
+          served by more than one utility, so your bill, not your county line, settles which one you have.
+        </li>
+        <li>
+          <strong>More of your neighbors could take part.</strong> Renters, apartment residents, and people with shady
+          or unsuitable roofs can't easily put panels on their homes. In some counties that's a third of households
+          or more. Community solar is open to any customer of the utility.
+        </li>
+        <li>
+          <strong>Projects would be built locally.</strong> Solar projects would go up on rooftops, warehouses, parking
+          lots, former industrial sites, and open land in each utility's area. Local zoning would still decide where
+          they can be built.
+        </li>
+        <li>
+          <strong>Farms could join too.</strong> Under the House-passed bill, at least half of each project has to go
+          to small subscribers like households, or to farms.
+        </li>
+        <li>
+          <strong>Your state senator has a say.</strong> The bill is waiting in the State Senate, so the senators who
+          represent your county are the ones who can move it forward.
+        </li>
+      </ul>
+      <p>
+        Each county guide pulls this together with local numbers: the utilities serving the county and their prices
+        to compare, how many households rent, every ZIP code, and your state senators. We're adding guides for every
+        county. <a href="#notify">Join the list</a> to hear when yours is ready.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 style="margin-top:0" id="directory">All 67 Pennsylvania counties</h2>
+      <div class="tools">
+        <label for="county-filter" class="sr">Filter counties</label>
+        <input id="county-filter" type="search" placeholder="Type a county name" autocomplete="off" />
+        <nav class="letters" aria-label="Jump to letter">
+          {letters.map((l) => <a href={`#letter-${l}`}>{l}</a>)}
+        </nav>
+      </div>
+      <ul class="dir">
+        {list.map((c, i) => (
+          <li class={c.slug ? 'has-guide' : undefined} data-name={c.name.toLowerCase()} id={i === 0 || list[i - 1].name[0] !== c.name[0] ? `letter-${c.name[0]}` : undefined}>
+            <div class="cname">
+              {c.slug ? <a href={`/counties/${c.slug}`}>{c.name} County</a> : <span>{c.name} County</span>}
+            </div>
+            <div class="cutil">
+              {c.main.join(', ')}{c.part.length > 0 && <span class="part">{c.main.length ? '; parts: ' : 'Parts: '}{c.part.join(', ')}</span>}
+            </div>
+            {c.slug ? <a class="tag ready" href={`/counties/${c.slug}`}>Read the guide →</a> : <span class="tag">Guide coming soon</span>}
+          </li>
+        ))}
+      </ul>
+      <p class="note" id="no-match" hidden>No county matches that name.</p>
+      <p class="note">
+        Utilities listed from the U.S. Department of Energy's electric utilities by ZIP code data (2022). Utility lines
+        don't follow county borders exactly, so check your electric bill.
+      </p>
+    </div>
+  </section>
+
+  <Signup />
+</Base>
+
+<script is:inline>
+  (function () {
+    var input = document.getElementById('county-filter');
+    var items = document.querySelectorAll('.dir li');
+    var none = document.getElementById('no-match');
+    if (!input) return;
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase().replace(/\s*county$/, '');
+      var shown = 0;
+      items.forEach(function (li) {
+        var match = !q || li.getAttribute('data-name').indexOf(q) === 0;
+        li.hidden = !match;
+        if (match) shown++;
+      });
+      none.hidden = shown > 0;
+    });
+  })();
+</script>
+
+<style>
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  .zip-mini { display: flex; gap: 10px; max-width: 420px; margin: 1em 0; }
+  .zip-mini input { flex: 1; min-width: 0; padding: 12px 14px; font-size: 1rem; border: 2px solid var(--line); border-radius: 10px; font-family: inherit; }
+  .zip-mini input:focus { outline: none; border-color: var(--green-600); }
+  .tools { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin: 0 0 16px; }
+  .tools input { padding: 10px 14px; font-size: 1rem; border: 2px solid var(--line); border-radius: 10px; font-family: inherit; min-width: 240px; flex: 0 1 320px; }
+  .tools input:focus { outline: none; border-color: var(--green-600); }
+  .letters { display: flex; flex-wrap: wrap; gap: 4px; }
+  .letters a { display: inline-block; min-width: 28px; text-align: center; padding: 4px 6px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .9rem; }
+  .letters a:hover { background: var(--green-100); }
+  .dir { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+  .dir li { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; scroll-margin-top: 16px; }
+  .dir li[hidden] { display: none; }
+  .cname { font-weight: 600; color: var(--green-900); }
+  .cname a { text-decoration: none; }
+  .cname a:hover { text-decoration: underline; }
+  .tag { display: inline-block; margin-top: 8px; font-size: .78rem; color: var(--muted); }
+  .tag.ready { color: var(--green-600); font-weight: 600; text-decoration: none; }
+  .dir li.has-guide { border-color: var(--green-600); }
+  .cutil { font-size: .9rem; color: var(--ink); margin-top: 4px; }
+  .cutil .part { color: var(--muted); }
+  .note { font-size: .9rem; color: var(--muted); }
+</style>
