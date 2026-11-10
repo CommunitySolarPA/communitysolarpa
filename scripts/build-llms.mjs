@@ -64,11 +64,10 @@ const groups = [
   ['Tools', (r) => r === '/zip-lookup'],
   ['Pennsylvania utility guides', (r) => r.startsWith('/utilities')],
   ['County guides', (r) => r.startsWith('/counties')],
-  ['Updates', (r) => r.startsWith('/updates')],
   ['About', (r) => ['/about'].includes(r)],
   ['Optional', () => true],
 ];
-const order = ['/', '/what-is-community-solar', '/why-community-solar', '/pennsylvania', '/utilities', '/updates'];
+const order = ['/', '/what-is-community-solar', '/why-community-solar', '/pennsylvania', '/utilities'];
 const rank = (p) => { const i = order.indexOf(p.route); return i < 0 ? 99 : i; };
 pages.sort((a, b) => rank(a) - rank(b) || a.route.localeCompare(b.route));
 
