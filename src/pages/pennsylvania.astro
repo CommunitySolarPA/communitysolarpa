@@ -4,10 +4,39 @@ import Signup from '../components/Signup.astro';
 
 // Update this date every time the status on this page is re-checked.
 const lastReviewed = 'October 16, 2026';
+
+// Structured data for the two bills this page tracks.
+const pa = { '@type': 'State', name: 'Pennsylvania', sameAs: 'https://en.wikipedia.org/wiki/Pennsylvania' };
+const bills = [
+  {
+    '@type': 'Legislation',
+    '@id': 'https://communitysolarpa.org/pennsylvania/#hb504',
+    name: 'Pennsylvania House Bill 504 (2025-2026 session): community solar',
+    legislationIdentifier: 'HB 504',
+    legislationType: 'Bill',
+    legislationJurisdiction: pa,
+    author: { '@type': 'Person', name: 'Peter Schweyer', jobTitle: 'Pennsylvania State Representative' },
+    url: 'https://www.palegis.us/legislation/bills/2025/hb504',
+    inLanguage: 'en-US',
+  },
+  {
+    '@type': 'Legislation',
+    '@id': 'https://communitysolarpa.org/pennsylvania/#sb504',
+    name: 'Pennsylvania Senate Bill 504 (2025-2026 session): community solar',
+    legislationIdentifier: 'SB 504',
+    legislationType: 'Bill',
+    legislationJurisdiction: pa,
+    author: { '@type': 'Person', name: 'Judy Schwank', jobTitle: 'Pennsylvania State Senator' },
+    url: 'https://www.palegis.us/legislation/bills/2025/sb504',
+    inLanguage: 'en-US',
+  },
+];
 ---
 <Base
   title="Pennsylvania community solar status"
   description="Where Pennsylvania's community solar legislation (HB 504 / SB 504) stands, what it would do, and what happens next."
+  about={{ '@id': 'https://communitysolarpa.org/pennsylvania/#hb504' }}
+  schema={bills}
 >
   <section>
     <div class="wrap prose">

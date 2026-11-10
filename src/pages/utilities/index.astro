@@ -7,6 +7,8 @@ const rows = utilities.map((u) => ({ ...u, counties: countiesFor(u.code).main })
 <Base
   title="Pennsylvania electric utilities and community solar"
   description="Community solar guides for PECO, PPL, Duquesne Light, Met-Ed, Penelec, Penn Power, and West Penn Power customers, with each utility's price to compare and service area."
+
+  breadcrumbs={[{ name: 'Utility guides', href: '/utilities' }]}
 >
   <div class="hero">
     <div class="wrap">

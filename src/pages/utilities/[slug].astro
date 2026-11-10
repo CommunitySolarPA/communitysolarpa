@@ -43,6 +43,15 @@ const faqs = [
   },
 ];
 
+const aboutUtility = {
+  '@type': 'Organization',
+  name: u.fullName,
+  alternateName: u.name,
+  url: u.website,
+  parentOrganization: { '@type': 'Organization', name: u.parent },
+  areaServed: { '@type': 'State', name: 'Pennsylvania' },
+};
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -52,6 +61,9 @@ const jsonLd = {
 <Base
   title={`Community solar for ${u.name} customers`}
   description={`How community solar would work for ${u.name} customers in Pennsylvania: the ${u.name} price to compare, which counties ${u.name} serves, and where the state's community solar bill stands.`}
+
+  breadcrumbs={[{ name: 'Utility guides', href: '/utilities' }, { name: u.name, href: `/utilities/${u.slug}` }]}
+  about={aboutUtility}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
