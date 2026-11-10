@@ -46,10 +46,15 @@ const faqs = [
     q: `Can renters in ${county} join?`,
     a: `Yes, if they pay their own electric bill. About ${c.renterPct}% of ${county} households rent their home. Under HB 504 as passed by the State House, any customer of the utility can subscribe, and nothing gets installed at your home.`,
   },
-  {
-    q: `Would community solar projects take up farmland?`,
-    a: `Not necessarily. Projects could also go on rooftops, warehouses, parking lots and former industrial sites, and the House-passed bill allows larger projects (up to 20 megawatts) on rooftops and brownfields. Local zoning would still decide where projects can be built.`,
-  },
+  c.farmFaq
+    ? {
+        q: `Would community solar projects take up farmland?`,
+        a: `Not necessarily. Projects could also go on rooftops, warehouses, parking lots and former industrial sites, and the House-passed bill allows larger projects (up to 20 megawatts) on rooftops and brownfields. Local zoning would still decide where projects can be built.`,
+      }
+    : {
+        q: `Would the solar project be in ${county}?`,
+        a: `Not necessarily. A project has to connect to the same utility as its subscribers, so it could be anywhere in ${main.name}'s service area. Projects can go on rooftops, warehouses, parking lots, former industrial sites and open land, and local zoning decides where they can be built.`,
+      },
   {
     q: `Can I sign up today?`,
     a: `Not yet. Pennsylvania has no community solar program until the State Senate passes the bill and the Governor signs it. Join our list and we'll email you when that changes.`,
@@ -133,6 +138,7 @@ const jsonLd = {
           <thead><tr><th></th><th>{county}</th><th>Pennsylvania</th></tr></thead>
           <tbody>
             <tr><td>Households that rent</td><td>{pct(c.renterPct)} (about {fmt(round(c.renterHouseholds, 100))})</td><td>{pct(pennsylvania.renterPct)}</td></tr>
+            <tr><td>Rowhomes, townhouses and other attached houses</td><td>{pct(c.attachedPct)}</td><td>{pct(pennsylvania.attachedPct)}</td></tr>
             <tr><td>Homes in buildings with 2 or more units</td><td>{pct(c.multiUnitPct)}</td><td>{pct(pennsylvania.multiUnitPct)}</td></tr>
             <tr><td>Mobile homes</td><td>{pct(c.mobileHomePct)}</td><td>{pct(pennsylvania.mobileHomePct)}</td></tr>
           </tbody>
@@ -140,25 +146,35 @@ const jsonLd = {
       </div>
       <p class="note">U.S. Census Bureau, American Community Survey {acsVintage} 5-year estimates.</p>
 
-      <h2>{c.localNote.heading}</h2>
-      {c.localNote.body.map((p) => <p>{p}</p>)}
+      {c.localNote && <h2>{c.localNote.heading}</h2>}
+      {c.localNote && c.localNote.body.map((p) => <p>{p}</p>)}
 
       <h2>Your state senators</h2>
+      {c.senators && c.senators.length > 0 ? (
+        <>
+          <p>
+            HB 504 passed the State House in May 2025 and is waiting in the State Senate. The current session ends
+            November 30, 2026. {words[c.senators.length] ?? c.senators.length} Senate districts include parts of {county}:
+          </p>
+          <ul class="senators">
+            {c.senators.map((s) => (
+              <li>
+                <strong>District {s.district}:</strong> <a href={s.url} rel="noopener">Sen. {s.name}</a>
+                {s.note && <span class="note"> {s.note}</span>}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>
+          HB 504 passed the State House in May 2025 and is waiting in the State Senate. Half of the Senate's seats were
+          on the ballot in November 2026, and new terms begin December 1, so we'll list {county}'s senators here once
+          the new Senate is seated.
+        </p>
+      )}
       <p>
-        HB 504 passed the State House in May 2025 and is waiting in the State Senate. The current session ends
-        November 30, 2026. {words[c.senators.length] ?? c.senators.length} Senate districts include parts of {county}:
-      </p>
-      <ul class="senators">
-        {c.senators.map((s) => (
-          <li>
-            <strong>District {s.district}:</strong> <a href={s.url} rel="noopener">Sen. {s.name}</a>
-            {s.note && <span class="note"> {s.note}</span>}
-          </li>
-        ))}
-      </ul>
-      <p>
-        Not sure which district you're in? <a href="https://www.palegis.us/find-my-legislator" rel="noopener">Find your
-        state senator and representative</a> by address, and tell them you support community solar.
+        <a href="https://www.palegis.us/find-my-legislator" rel="noopener">Find your state senator and representative</a> by
+        address, and tell them you support community solar.
       </p>
 
       <BillEstimator ptc={main.ptc} name={main.name} />
@@ -190,8 +206,8 @@ const jsonLd = {
         <li><a href="https://data.openei.org/submissions/5993" rel="noopener">U.S. Department of Energy / OpenEI: electric utilities by ZIP code (2022)</a></li>
         <li><a href="https://www.papowerswitch.com/" rel="noopener">PA PowerSwitch (PA Public Utility Commission): price to compare by utility</a></li>
         <li><a href="https://www.palegis.us/senate/members" rel="noopener">Pennsylvania State Senate: members, 2025-2026 session</a></li>
-        {c.sources.map((s) => <li><a href={s.url} rel="noopener">{s.label}</a></li>)}
-        {c.localNote.source && <li><a href={c.localNote.source.url} rel="noopener">{c.localNote.source.label}</a></li>}
+        {(c.sources ?? []).map((s) => <li><a href={s.url} rel="noopener">{s.label}</a></li>)}
+        {c.localNote?.source && <li><a href={c.localNote.source.url} rel="noopener">{c.localNote.source.label}</a></li>}
         <li><a href="https://www.palegis.us/legislation/bills/2025/hb504" rel="noopener">Pennsylvania General Assembly: HB 504 bill information</a></li>
       </ul>
     </div>
