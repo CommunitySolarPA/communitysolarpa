@@ -10,9 +10,29 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const url = `https://communitysolarpa.org/updates/${post.id}/`;
+const posting = {
+  '@type': 'BlogPosting',
+  '@id': `${url}#article`,
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  dateModified: (post.data.updated ?? post.data.date).toISOString(),
+  author: { '@id': 'https://communitysolarpa.org/#org' },
+  publisher: { '@id': 'https://communitysolarpa.org/#org' },
+  image: 'https://communitysolarpa.org/og-image.png',
+  mainEntityOfPage: { '@id': `${url}#webpage` },
+  inLanguage: 'en-US',
+};
 const date = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
-<Base title={post.data.title} description={post.data.description}>
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  breadcrumbs={[{ name: 'Updates', href: '/updates' }, { name: post.data.title, href: `/updates/${post.id}` }]}
+  schema={[posting]}
+>
   <article>
     <section>
       <div class="wrap prose">

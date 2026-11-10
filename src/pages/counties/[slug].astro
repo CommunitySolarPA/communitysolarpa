@@ -76,6 +76,14 @@ const faqs = [
   },
 ];
 
+const wiki = (t: string) => `https://en.wikipedia.org/wiki/${t.replace(/ /g, '_')}`;
+const aboutCounty = {
+  '@type': 'AdministrativeArea',
+  name: `${county}, Pennsylvania`,
+  sameAs: wiki(`${county}, Pennsylvania`),
+  containedInPlace: { '@type': 'State', name: 'Pennsylvania', sameAs: wiki('Pennsylvania') },
+};
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -85,6 +93,9 @@ const jsonLd = {
 <Base
   title={`Community solar in ${county}, PA`}
   description={`What community solar would mean in ${county}, Pennsylvania: which utility serves each ZIP code, how many households rent, your state senators, and where the state's community solar bill stands.`}
+
+  breadcrumbs={[{ name: 'County guides', href: '/counties' }, { name: county, href: `/counties/${c.slug}` }]}
+  about={aboutCounty}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
