@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "check:content": "node scripts/check-no-em-dash.mjs",
-    "build": "node scripts/check-no-em-dash.mjs && astro build",
+    "build": "node scripts/check-no-em-dash.mjs && astro build && node scripts/build-llms.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
