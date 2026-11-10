@@ -29,8 +29,6 @@ function sourcesFor(pathname) {
   if (p.startsWith('counties/')) return countyFiles;
   if (p === 'utilities') return ['src/pages/utilities/index.astro', 'src/data/utilities.ts'];
   if (p.startsWith('utilities/')) return utilityFiles;
-  if (p === 'updates') return ['src/pages/updates/index.astro', 'src/content/updates'];
-  if (p.startsWith('updates/')) return [`src/content/updates/${p.slice(8)}.md`];
   return [`src/pages/${p}.astro`];
 }
 
