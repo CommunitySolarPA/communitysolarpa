@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Signup from '../../components/Signup.astro';
 import BillEstimator from '../../components/BillEstimator.astro';
 import { counties, pennsylvania, acsVintage, type County } from '../../data/counties';
-import { byCode, ptcAsOf } from '../../data/utilities';
+import { byCode, ptcAsOf, smallUtilities } from '../../data/utilities';
 import zips from '../../../public/data/pa-zips.json';
 
 export function getStaticPaths() {
@@ -14,6 +14,7 @@ const { c } = Astro.props as { c: County };
 const county = `${c.name} County`;
 const fmt = (n: number) => n.toLocaleString('en-US');
 const round = (n: number, to: number) => Math.round(n / to) * to;
+const smallNames: Record<string, string> = Object.fromEntries(smallUtilities.map((s) => [s.code, s.name]));
 const words = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
 const pct = (n: number) => n.toFixed(1) + '%';
 
@@ -23,15 +24,21 @@ const rows = Object.entries(zips as Record<string, [string, string, string]>)
   .map(([zip, [town, , codes]]) => {
     const estimated = codes.endsWith('?');
     const list = codes.replace('?', '').split('');
-    return { zip, town, estimated, utils: list.map((k) => byCode[k]?.name ?? (k === 'o' ? 'Co-op or borough' : k)) };
+    return { zip, town, estimated, utils: list.map((k) => byCode[k]?.name ?? smallNames[k] ?? (k === 'o' ? 'Co-op' : k)) };
   })
   .sort((a, b) => a.town.localeCompare(b.town) || a.zip.localeCompare(b.zip));
 
 // How many ZIP codes list each major utility, most common first.
 const counts = new Map<string, number>();
+const smallCounts = new Map<string, number>();
+let coopCount = 0;
 for (const [, [, county2, codes]] of Object.entries(zips as Record<string, [string, string, string]>)) {
   if (county2 !== c.name) continue;
-  for (const k of codes.replace('?', '').split('')) if (byCode[k]) counts.set(k, (counts.get(k) ?? 0) + 1);
+  for (const k of codes.replace('?', '').split('')) {
+    if (byCode[k]) counts.set(k, (counts.get(k) ?? 0) + 1);
+    else if (smallNames[k]) smallCounts.set(k, (smallCounts.get(k) ?? 0) + 1);
+    else if (k === 'o') coopCount++;
+  }
 }
 const utilList = [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([k, n]) => ({ u: byCode[k], n }));
 const main = utilList[0].u;
@@ -121,6 +128,18 @@ const jsonLd = {
             Price to compare {u.ptc.toFixed(2)}¢ per kWh.
           </li>
         ))}
+        {[...smallCounts.entries()].map(([k, n]) => (
+          <li>
+            <a href="/utilities#other"><strong>{smallNames[k]}</strong></a>: listed for {n} of {rows.length} ZIP codes.
+            A smaller regulated utility whose customers would likely be covered too.
+          </li>
+        ))}
+        {coopCount > 0 && (
+          <li>
+            <a href="/utilities#other"><strong>Rural electric co-op</strong></a>: listed for {coopCount} of {rows.length} ZIP codes.
+            The bill as written likely would not apply to co-op members.
+          </li>
+        )}
       </ul>
       <p>
         Where a ZIP code lists more than one utility, the line between them runs through it, and the name on your
