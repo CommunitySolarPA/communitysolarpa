@@ -1,0 +1,223 @@
+---
+import Base from '../../layouts/Base.astro';
+import Signup from '../../components/Signup.astro';
+import BillEstimator from '../../components/BillEstimator.astro';
+import { counties, pennsylvania, acsVintage, type County } from '../../data/counties';
+import { byCode, ptcAsOf } from '../../data/utilities';
+import zips from '../../../public/data/pa-zips.json';
+
+export function getStaticPaths() {
+  return counties.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+
+const { c } = Astro.props as { c: County };
+const county = `${c.name} County`;
+const fmt = (n: number) => n.toLocaleString('en-US');
+const round = (n: number, to: number) => Math.round(n / to) * to;
+const words = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+const pct = (n: number) => n.toFixed(1) + '%';
+
+// ZIP codes in this county, with the utilities the data lists for each.
+const rows = Object.entries(zips as Record<string, [string, string, string]>)
+  .filter(([, v]) => v[1] === c.name)
+  .map(([zip, [town, , codes]]) => {
+    const estimated = codes.endsWith('?');
+    const list = codes.replace('?', '').split('');
+    return { zip, town, estimated, utils: list.map((k) => byCode[k]?.name ?? (k === 'o' ? 'Co-op or borough' : k)) };
+  })
+  .sort((a, b) => a.town.localeCompare(b.town) || a.zip.localeCompare(b.zip));
+
+// How many ZIP codes list each major utility, most common first.
+const counts = new Map<string, number>();
+for (const [, [, county2, codes]] of Object.entries(zips as Record<string, [string, string, string]>)) {
+  if (county2 !== c.name) continue;
+  for (const k of codes.replace('?', '').split('')) if (byCode[k]) counts.set(k, (counts.get(k) ?? 0) + 1);
+}
+const utilList = [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([k, n]) => ({ u: byCode[k], n }));
+const main = utilList[0].u;
+const others = utilList.slice(1);
+
+const faqs = [
+  {
+    q: `Which utility would my credits come through in ${county}?`,
+    a: `The utility that delivers your electricity today. In ${county} that's ${main.name} for most homes${others.length ? `, with ${others.map((o) => o.u.name).join(' and ')} listed in some ZIP codes` : ''}. Your electric bill shows which one you have.`,
+  },
+  {
+    q: `Can renters in ${county} join?`,
+    a: `Yes, if they pay their own electric bill. About ${c.renterPct}% of ${county} households rent their home. Under HB 504 as passed by the State House, any customer of the utility can subscribe, and nothing gets installed at your home.`,
+  },
+  {
+    q: `Would community solar projects take up farmland?`,
+    a: `Not necessarily. Projects could also go on rooftops, warehouses, parking lots and former industrial sites, and the House-passed bill allows larger projects (up to 20 megawatts) on rooftops and brownfields. Local zoning would still decide where projects can be built.`,
+  },
+  {
+    q: `Can I sign up today?`,
+    a: `Not yet. Pennsylvania has no community solar program until the State Senate passes the bill and the Governor signs it. Join our list and we'll email you when that changes.`,
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base
+  title={`Community solar in ${county}, PA`}
+  description={`What community solar would mean in ${county}, Pennsylvania: which utility serves each ZIP code, how many households rent, your state senators, and where the state's community solar bill stands.`}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">County guide · {county}</div>
+      <h1>Community solar in {county}</h1>
+      <p class="lede">
+        {county} is home to about {fmt(round(c.population, 1000))} people in {fmt(round(c.households, 1000))} households.
+        Pennsylvania doesn't have a community solar program yet. If the state's bill becomes law, households
+        here would subscribe through their electric utility, which for most of the county is {main.name}.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="facts">
+        <div class="card">
+          <div class="label">Main utility</div>
+          <div class="big small">{main.name}</div>
+          <div class="sub">Price to compare {main.ptc.toFixed(2)}¢ per kWh ({ptcAsOf}). <a href={`/utilities/${main.slug}`}>{main.name} guide</a></div>
+        </div>
+        <div class="card">
+          <div class="label">Households that rent</div>
+          <div class="big">{c.renterPct}%</div>
+          <div class="sub">About {fmt(round(c.renterHouseholds, 100))} households. Statewide: {pennsylvania.renterPct}%.</div>
+        </div>
+        <div class="card">
+          <div class="label">Community solar today</div>
+          <div class="big small">Not available yet</div>
+          <div class="sub"><a href="/pennsylvania">HB 504 is pending in the State Senate</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <h2 style="margin-top:0">Which utility serves {county}</h2>
+      <p>
+        Community solar credits would show up on the bill from the utility that delivers your power, and you'd
+        subscribe to a project connected to that same utility.
+      </p>
+      <ul class="utils">
+        {utilList.map(({ u, n }) => (
+          <li>
+            <a href={`/utilities/${u.slug}`}><strong>{u.name}</strong></a>: listed for {n} of {rows.length} ZIP codes.
+            Price to compare {u.ptc.toFixed(2)}¢ per kWh.
+          </li>
+        ))}
+      </ul>
+      <p>
+        Where a ZIP code lists more than one utility, the line between them runs through it, and the name on your
+        electric bill settles it. A few boroughs and rural areas in Pennsylvania get power from a municipal
+        electric department or a co-op instead, and the bill likely would not apply to them.
+      </p>
+
+      <h2>Who community solar could reach here</h2>
+      <p>
+        Rooftop solar works best for homeowners with a sunny roof of their own. Community solar is built for
+        everyone else too. In {county}:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>{county}</th><th>Pennsylvania</th></tr></thead>
+          <tbody>
+            <tr><td>Households that rent</td><td>{pct(c.renterPct)} (about {fmt(round(c.renterHouseholds, 100))})</td><td>{pct(pennsylvania.renterPct)}</td></tr>
+            <tr><td>Homes in buildings with 2 or more units</td><td>{pct(c.multiUnitPct)}</td><td>{pct(pennsylvania.multiUnitPct)}</td></tr>
+            <tr><td>Mobile homes</td><td>{pct(c.mobileHomePct)}</td><td>{pct(pennsylvania.mobileHomePct)}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">U.S. Census Bureau, American Community Survey {acsVintage} 5-year estimates.</p>
+
+      <h2>{c.localNote.heading}</h2>
+      {c.localNote.body.map((p) => <p>{p}</p>)}
+
+      <h2>Your state senators</h2>
+      <p>
+        HB 504 passed the State House in May 2025 and is waiting in the State Senate. The current session ends
+        November 30, 2026. {words[c.senators.length] ?? c.senators.length} Senate districts include parts of {county}:
+      </p>
+      <ul class="senators">
+        {c.senators.map((s) => (
+          <li>
+            <strong>District {s.district}:</strong> <a href={s.url} rel="noopener">Sen. {s.name}</a>
+            {s.note && <span class="note"> {s.note}</span>}
+          </li>
+        ))}
+      </ul>
+      <p>
+        Not sure which district you're in? <a href="https://www.palegis.us/find-my-legislator" rel="noopener">Find your
+        state senator and representative</a> by address, and tell them you support community solar.
+      </p>
+
+      <BillEstimator ptc={main.ptc} name={main.name} />
+
+      <h2>ZIP codes in {county}</h2>
+      <p>{rows.length} ZIP codes, with the utility the data lists for each. Tap a ZIP code for its price to compare.</p>
+      <ul class="zips">
+        {rows.map((r) => (
+          <li>
+            <a href={`/zip-lookup?zip=${r.zip}`}>{r.zip}</a> <span class="town">{r.town}</span>
+            <span class="u">{r.utils.join(', ')}{r.estimated && ' (est.)'}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Common questions in {county}</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <h2>Sources</h2>
+      <ul class="sources">
+        <li><a href={`https://data.census.gov/table/ACSDP5Y2024.DP04?g=050XX00US${c.fips}`} rel="noopener">U.S. Census Bureau: American Community Survey {acsVintage}, housing characteristics (DP04)</a></li>
+        <li><a href="https://data.openei.org/submissions/5993" rel="noopener">U.S. Department of Energy / OpenEI: electric utilities by ZIP code (2022)</a></li>
+        <li><a href="https://www.papowerswitch.com/" rel="noopener">PA PowerSwitch (PA Public Utility Commission): price to compare by utility</a></li>
+        <li><a href="https://www.palegis.us/senate/members" rel="noopener">Pennsylvania State Senate: members, 2025-2026 session</a></li>
+        {c.sources.map((s) => <li><a href={s.url} rel="noopener">{s.label}</a></li>)}
+        {c.localNote.source && <li><a href={c.localNote.source.url} rel="noopener">{c.localNote.source.label}</a></li>}
+        <li><a href="https://www.palegis.us/legislation/bills/2025/hb504" rel="noopener">Pennsylvania General Assembly: HB 504 bill information</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <Signup />
+</Base>
+
+<style>
+  .facts { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .facts .label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .facts .big { font-family: var(--serif); font-size: 2rem; color: var(--green-900); line-height: 1.2; margin: 6px 0; }
+  .facts .big.small { font-size: 1.35rem; }
+  .facts .sub { font-size: .9rem; color: var(--muted); }
+  .utils li, .senators li { margin-bottom: .5em; }
+  .note { font-size: .9rem; color: var(--muted); }
+  .table-wrap { overflow-x: auto; margin: 1em 0; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: .95rem; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--green-100); }
+  .zips { list-style: none; padding: 0; margin: 1em 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px 18px; font-size: .95rem; }
+  .zips li { margin: 0; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .zips a { font-weight: 600; margin-right: 4px; }
+  .zips .u { display: block; font-size: .82rem; color: var(--muted); }
+  .faq details { border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .faq summary { cursor: pointer; font-weight: 600; color: var(--green-900); }
+  .faq details p { margin: 10px 0 0; }
+  .sources { font-size: .95rem; }
+</style>
